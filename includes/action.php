@@ -214,7 +214,7 @@ $visibility = cq("".$_POST['visibility']."");
 $uid = $_SESSION['uid'];
 $aka = $_SESSION['akainstance'];
 $redirect = $_SESSION['redirect'];
-$date = date();
+$date = time();
 
 $sql = mysqli_fetch_array(mysqli_query($conn, "SELECT id FROM articles_published WHERE uid = '$uid' AND article_id = '$article_id'"));
 $exists = $sql['id'];
@@ -279,7 +279,7 @@ $sql = "UPDATE articles SET shares_count = shares_count - 1 WHERE id = '$article
 
 require './mastophp/autoload.php';
 $mastoPHP = new MastoPHP\MastoPHP(''.$aka.'');
-$app = $mastoPHP->registerApp(WEBSITE_NALE, WEBSITE_URL);
+$app = $mastoPHP->registerApp(WEBSITE_NAME, WEBSITE_URL);
 $bearer = $app->gheader();
 $bearer = $bearer['Authorization'];
 $domaine = thedomain($aka);
