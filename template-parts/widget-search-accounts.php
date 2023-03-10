@@ -96,7 +96,7 @@ foreach ($result as $row) {
     if ($is_sensitive !== "1") {
 ?>
 	<div style="height: 60px; margin-top:20px;" class="suggestion_<?=$feed_id;?>">
-		<div style="width:60px; aspect-ratio: 1 / 1; background-image: url(<?=$feed_avatar;?>); background-size: cover; background-position: center; border-radius: 50%; float:left;"><a href="<?= WEBSITE_URL."/feed/".$feed_id;?>" style="display:block; width:100%; height:100%;"></a></div>
+		<div style="width:60px; aspect-ratio: 1 / 1; background-image: url(<?=$feed_avatar;?>); background-size: cover; background-position: center; border-radius: 50%; float:left;"><a href="<?= WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="display:block; width:100%; height:100%;"></a></div>
 
 		<div class="suggestion-button" title="<?= SUBSCRIBE_TO ?> <?=$feed_name;?>">
 		<?php if ($isconnected == "") { ?>
@@ -113,7 +113,7 @@ foreach ($result as $row) {
         </div>
 
 		<div style="margin-left: 74px; margin-right: 30px; overflow: hidden; padding-top: 12px; line-height: 16px;">
-			<a href="<?= WEBSITE_URL."/feed/".$feed_id;?>" style="color:color:var(--feedbot-title); font-weight: bold; text-decoration: none;"><?=truncate($feed_name,30);?></a> <?php if ($youtubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:20px; margin-left: 4px; margin-top: 1px; vertical-align: top;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:14px; margin-left: 5px; vertical-align: middle;" /><?php } ?><br />
+			<a href="<?= WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:color:var(--feedbot-title); font-weight: bold; text-decoration: none;"><?=truncate($feed_name,30);?></a> <?php if ($youtubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:20px; margin-left: 4px; margin-top: 1px; vertical-align: top;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:14px; margin-left: 5px; vertical-align: middle;" /><?php } ?><br />
 			<span style="font-size: 12px;"><?=$media_url;?></span>
 		</div>
 	</div>
