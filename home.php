@@ -13,27 +13,25 @@ $totalposts = mysqli_num_rows($result);
 ?>
 
 <div class="contenair-home">
-	
-<div class="title"><i class="fa fa-home" aria-hidden="true"></i> <?= HOME ?></div>
+	<div class="title">
+		<i class="fa fa-home" aria-hidden="true"></i> <?= HOME ?>
+	</div>
 
 <?php if ($totalfeeds > "0") { ?>
-<div class="story_contenair">	
+	<div class="story_contenair">	
 <?php include('./template-parts/widget-stories-subscriptions.php'); ?>
-</div>
+	</div>
 <?php } ?>
 
-<div style="clear:both;">
-
-<div class="widget-home" style="display: unset;">
+	<div style="clear:both;">
+		<div class="widget-home" style="display: unset;">
 <?php include('./template-parts/widget-welcome.php'); ?>
 <?php include('./template-parts/widget-suggestions.php'); ?>
 <?php include('./template-parts/widget-shares.php'); ?>
 <?php include('./template-parts/widget-funding.php'); ?>
 <?php include('template-parts/footer.php'); ?>
-</div>
-
-
-<div>
+		</div>
+		<div>
 
 <?php if ($totalfeeds == "0") { ?>
 <?php include('./template-parts/new-users.php'); ?>
@@ -46,33 +44,32 @@ $result = mysqli_query($conn, $sql);
 include('./template-parts/home-timeline.php');
 include('./template-parts/autopromo.php');
 ?>
-<div id="post-data" class="appear"></div>
+			<div id="post-data" class="appear"></div>
+		</div>
+		<script>
+			var isActive = false;
+			$(window).scroll(function(){
+				if(!isActive && $(window).scrollTop() + $(window).height() >= $(document).height() - 550){
+					isActive = true;
+					var last_id = $(".content-home:last").attr("id");
+					loadMore(last_id);
+				}
+			});
 
-</div>
-<script>
-var isActive = false;
-$(window).scroll(function() {
-    if(!isActive && $(window).scrollTop() + $(window).height() >= $(document).height() - 550) {
-        isActive = true;
-        var last_id = $(".content-home:last").attr("id");
-        loadMore(last_id);
-    }
-});
+			function loadMore(last_id){
+				var website = window.location.origin;
+				$.ajax({
+					url: website + '/includes/infinite-home.php?last_id=' + last_id,
+					type: "GET",
+					beforeSend: function(){
+						$('.ajax-load').show();
+					}
+				}).done(function(data){
+					$('.ajax-load').hide();
+					$("#post-data").append(data);
+					isActive = false;
+				}).fail(function(jqXHR, ajaxOptions, thrownError){
 
-function loadMore(last_id){
-  var website = window.location.origin;
-  $.ajax({
-      url: website + '/includes/infinite-home.php?last_id=' + last_id,
-      type: "GET",
-      beforeSend: function(){
-          $('.ajax-load').show();
-      }
-  }).done(function(data){
-      $('.ajax-load').hide();
-      $("#post-data").append(data);
-      isActive = false;
-  }).fail(function(jqXHR, ajaxOptions, thrownError){
-    
-  });
-}
+				});
+			}
 </script> 
