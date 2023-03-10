@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1080 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect id="Plan-de-travail1" serif:id="Plan de travail1" x="0" y="0" width="1080" height="1080" style="fill:none;"/>
+    <g id="Plan-de-travail11" serif:id="Plan de travail1">
+        <g transform="matrix(0.559019,0,0,0.559019,271.671,303.535)">
+            <path d="M275,350C230,350 194,315 109,315C-12,315 -66,388 -66,488C-66,669 146,915 288,915C363,915 401,875 421,776C591,848 822,782 822,553C822,344 618,128 348,128C320,128 298,150 298,178C298,206 320,228 348,228C542,228 688,340 714,524C720,569 711,609 672,609C655,609 638,598 632,578C585,423 523,337 390,337C337,337 304,350 275,350ZM298,-19C298,9 320,31 348,31C674,31 926,283 926,609C926,637 948,659 976,659C1004,659 1026,637 1026,609C1026,234 723,-69 348,-69C320,-69 298,-47 298,-19ZM384,531C384,505 406,483 433,483C459,483 481,505 481,531C481,558 459,580 433,580C406,580 384,558 384,531Z" style="fill-rule:nonzero;"/>
+        </g>
+    </g>
+</svg>

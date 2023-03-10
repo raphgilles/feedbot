@@ -1,0 +1,27 @@
+:root {
+  --feedbot-background: #E4E9F7;
+  --feedbot-sidebar-background: #11101D;
+  --feedbot-content-background: #FFF;
+  --feedbot-thumbnails-background: #F5F5F5;
+  --feedbot-thumbnails-borders: #DCDCDC;
+  --feedbot-box-shadow: rgba(149, 157, 165, 0.2);
+  --feedbot-shares-background-hover: #F6F6F6;
+  --feedbot-timeline-buttons: #585858;
+  --feedbot-input-background: #EEE;
+  --feedbot-text: #000;
+  --feedbot-title: #000;
+  --feedbot-purple: #563ACC;
+  --feedbot-white: #FFF;
+  --feedbot-dark: #2B2B2B;
+  --feedbot-gray: #787878;
+  --feedbot-alert-blue: #D9EDF7;
+  --feedbot-alert-blue-border: #CCE4F0;
+  --feedbot-alert-orange: #FFE1B6;
+  --feedbot-alert-orange-border: #FFDBA8;
+  --feedbot-alert-red: #dc3563;
+  --feedbot-alert-red-border: #146c43;
+  --feedbot-alert-green: #E3FDEB;
+  --feedbot-alert-green-border: #CDFDDC;
+  --form-control-color: #563ACC;
+  --form-control-disabled: #959495;
+}
