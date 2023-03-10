@@ -56,7 +56,7 @@ foreach ($result as $row) {
     foreach ($result2 as $row2) {
         $current_feed_id = $row2['id'];
         $feed_avatar = $row2['thumbnail'];
-        $feed_avatar = str_replace("/var/www/my_webapp/www/storage/icons/", WEBSITE_URL."/storage/icons/", $feed_avatar);
+        $feed_avatar = str_replace($_SERVER['DOCUMENT_ROOT']."storage/icons/", "storage/icons/", $feed_avatar);
         $feed_title = $row2['feed_title'];
         $feed_url = $row2['feed_url'];
         $media_url = parse_url($feed_url, PHP_URL_HOST);
@@ -66,7 +66,7 @@ foreach ($result as $row) {
     $description = $row['excerpt'];
     $url = $row['url'];
     $thumbnail = $row['thumbnail'];
-    $thumbnail = str_replace("/var/www/my_webapp/www/storage/thumbnails/", WEBSITE_URL."/storage/thumbnails/", $thumbnail);
+    $thumbnail = str_replace($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/", "storage/thumbnails/", $thumbnail);
     $date = minirelativedate($row['date']);
  
 ?>
