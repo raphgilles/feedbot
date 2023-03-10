@@ -281,12 +281,12 @@ $thumbnail_cinema = $thumbnail;
         if ($youtube_id !== $watch && $peertube_id !== $watch)  {
 ?>
 <div class="suggested-videos" title="<?=$title;?>">
-    <div style="background-image: url(<?=$thumbnail;?>)" class="suggested-videos-thumbnail" onclick="window.location='<?=WEBSITE_URL ?>/watch/<?=$youtube_id.$peertube_id;?>';">
+    <div style="background-image: url(<?=$thumbnail;?>)" class="suggested-videos-thumbnail" onclick="window.location='<?=WEBSITE_URL ?>/index.php?watch=<?=$youtube_id.$peertube_id;?>';">
         <div class="playbutton"><i class="fa fa-youtube-play" aria-hidden="true"></i></div>
     </div>
         <div style="overflow:hidden;">
-        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="<?=WEBSITE_URL ?>/watch/<?=$youtube_id.$peertube_id;?>" class="feed_item_title" style="color:color:var(--feedbot-title); font-size:14px;"><?=$title;?></a></p>
-        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="<?=WEBSITE_URL ?>/watch/<?=$youtube_id.$peertube_id;?>" style="color:var(--feedbot-text); text-decoration:none; font-size:14px;">@<?=$feed_name;?></a></p>
+        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="<?=WEBSITE_URL ?>/index.php?watch=<?=$youtube_id.$peertube_id;?>" class="feed_item_title" style="color:color:var(--feedbot-title); font-size:14px;"><?=$title;?></a></p>
+        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="<?=WEBSITE_URL ?>/index.php?watch=<?=$youtube_id.$peertube_id;?>" style="color:var(--feedbot-text); text-decoration:none; font-size:14px;">@<?=$feed_name;?></a></p>
         </div>
 </div>
 
@@ -326,7 +326,7 @@ $status_origin = $status['url'];
 $status_content = $status['content'];
 $website_without_https = str_replace( "https://", '', WEBSITE_URL);
 
-$status_content = str_replace( "› <a href=\"".WEBSITE_URL."/watch/".$youtubeid.$peertubeid."\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"><span class=\"invisible\">https://</span><span class=\"\">".$website_without_https."/watch/".$youtubeid.$peertubeid."</span><span class=\"invisible\"></span></a> via <span class=\"h-card\"><a href=\"https://tooter.social/@feedbot\" class=\"u-url mention\">@<span>feedbot</span></a></span>", '', $status_content);
+$status_content = str_replace( "› <a href=\"".WEBSITE_URL."/index.php?watch=".$youtubeid.$peertubeid."\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"><span class=\"invisible\">https://</span><span class=\"\">".$website_without_https."/watch/".$youtubeid.$peertubeid."</span><span class=\"invisible\"></span></a> via <span class=\"h-card\"><a href=\"https://tooter.social/@feedbot\" class=\"u-url mention\">@<span>feedbot</span></a></span>", '', $status_content);
 $status_content = str_replace( "<br /> <br />", ' ', $status_content);
 ?>
 <div class="content-videos shares">
