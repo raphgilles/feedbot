@@ -1498,7 +1498,7 @@ function hide_publish(back_url) {
 
 function story(media_id){
   var website = window.location.origin;
-  var new_url = "/story.php?media=" + media_id;
+  var new_url = "/story/" + media_id;
   var url = window.location.href;
   $.ajax({
       url: website + '/includes/stories.php?media=' + media_id,
@@ -1522,7 +1522,7 @@ function story(media_id){
 
 function podcast(id){
   var website = window.location.origin;
-  var new_url = "/podcast.php?id=" + id;
+  var new_url = "/podcast/" + id;
   var url = window.location.href;
   $.ajax({
       url: website + '/includes/podcast.php?id=' + id,
@@ -1545,14 +1545,14 @@ function podcast(id){
 
 
 function dark_mode() {
-$('#theme').attr('href', '/assets/colors-dark.css');
+$('#theme').attr('href', './assets/colors-dark.css');
 $('.light_mode').show();
 $('.dark_mode').hide();
 document.cookie = "theme=dark; path=/; max-age=" + 30*24*60*60;
 }
 
 function light_mode() {
-$('#theme').attr('href', '/assets/colors-light.css');
+$('#theme').attr('href', './assets/colors-light.css');
 $('.light_mode').hide();
 $('.dark_mode').show();
 document.cookie = "theme=light; path=/; max-age=" + 30*24*60*60;
