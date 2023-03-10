@@ -1,0 +1,48 @@
+{
+  "name": "Feedbot",
+  "short_name": "Feedbot",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#11101D",
+  "description": "Automated media monitoring",
+  "categories": ["social", "news", "newspaper", "rss"],
+  "shortcuts": [
+    {
+      "name": "Global feed",
+      "url": "/global",
+      "description": "All the news in one tab"
+    },
+    {
+      "name": "Add a feed",
+      "url": "/add",
+      "description": "Subscribe to a feed"
+    },
+    {
+      "name": "Your feeds",
+      "url": "/feeds",
+      "description": "Manage your feeds"
+    },
+    {
+      "name": "Your shares",
+      "url": "/shares",
+      "description": "Mange your automated shares on Mastodon"
+    },
+    {
+      "name": "Watch",
+      "url": "/watch/",
+      "description": "Watch beautiful videos"
+    },
+    {
+      "name": "Single feed",
+      "url": "/feed/",
+      "description": "Read the news from one single feed"
+    }
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
