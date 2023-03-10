@@ -2,6 +2,12 @@
 include('./config.php');
 include('./includes/functions.php');
 
+$sql = "SELECT * FROM users WHERE id = '1'";
+$result = mysqli_query($conn, $sql);
+foreach($result as $row){
+$admin = $row['username'];
+}
+
 $sidebar = $_COOKIE['open'];
 $lang = $_COOKIE['lang'];
 
@@ -176,6 +182,7 @@ if ($feed !== "" && $article !== "") {
 <title><?php if ($title !== NULL) { echo $title. " | "; } ?><?=WEBSITE_NAME;?></title>
 <meta property="og:platform" content="Feedbot" />
 <meta property="feedbot:version" content="0.9" />
+<meta property="feedbot:admin" content="<?=$admin;?>" />
 
 <?php if ($watch !== "") { ?>
 <meta property="og:title" content="<?php echo $title; ?>" />
