@@ -12,12 +12,12 @@ if($article_db_id == "") {
 
     if ($thumbnail !== WEBSITE_URL."/assets/nopreview.png") {
 	$folder = date('Y_m');
-	if (!file_exists(__DIR__."/../storage/thumbnails/".$folder)) {
-    mkdir(__DIR__."/../storage/thumbnails/".$folder, 0755, true);
+	if (!file_exists($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder)) {
+    mkdir($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder, 0755, true);
 	}
 	$thumbnail = reconstruct_url($thumbnail);
     $extension = pathinfo($thumbnail, PATHINFO_EXTENSION);
-    $article_thumb = __DIR__."/../storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".".$extension;
+    $article_thumb = $_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".".$extension;
     file_put_contents($article_thumb, file_get_contents($thumbnail));
     $maxwidth = "1280";
 	list($width, $height) = getimagesize($article_thumb);
