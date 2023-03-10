@@ -72,7 +72,7 @@ if ($theme == "") {$theme = "dark"; }
 <body>
 
 <div style="width:90%; max-width:1200px; margin:auto; margin-top:40px; padding:40px; border-radius:12px; background-color: var(--feedbot-content-background);">
-	<img src="../assets/icons/logomail.png" style="display:block; width:200px; filter:invert(1); margin:auto;" />
+	<img src="./assets/icons/logomail.png" style="display:block; width:200px; filter:invert(1); margin:auto;" />
 	<h3 style="text-align:center; color:var(--feedbot-title); margin-bottom: 60px;">Installation</h3>
 
 <?php if ($page == "") { ?>
