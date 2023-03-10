@@ -78,9 +78,9 @@ $isconnected = $_SESSION['uid'];
 
          <?php if ($lastid == "") { include('./template-parts/subscribe-button.php'); } else { include('subscribe-button.php'); } ?>
 
-        <div style="width: 60px; aspect-ratio: 1 / 1; background-image: url(<?=$feed_avatar;?>); background-size: cover; background-position: center; border-radius: 50%; float:left; overflow: hidden;"><a href="<?= WEBSITE_URL."/feed/".$feed_id;?>" style="display:block; width:100%; height:100%;"></a></div>
+        <div style="width: 60px; aspect-ratio: 1 / 1; background-image: url(<?=$feed_avatar;?>); background-size: cover; background-position: center; border-radius: 50%; float:left; overflow: hidden;"><a href="<?= WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="display:block; width:100%; height:100%;"></a></div>
 
-        <div style="margin-left: 74px; padding-top: 13px; line-height: 16px;"><a href="<?= WEBSITE_URL."/feed/".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;"><?=truncate($feed_name,30);?></a> <?php if ($youtubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:20px; margin-left: 4px; margin-bottom: 1px; vertical-align: middle;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:14px; margin-left: 5px; vertical-align: middle;" /><?php } ?><br />
+        <div style="margin-left: 74px; padding-top: 13px; line-height: 16px;"><a href="<?= WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;"><?=truncate($feed_name,30);?></a> <?php if ($youtubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:20px; margin-left: 4px; margin-bottom: 1px; vertical-align: middle;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:14px; margin-left: 5px; vertical-align: middle;" /><?php } ?><br />
         <span style="font-size: 12px;"><?=relativedate($date);?></span>
         </div>
     </div>
@@ -94,8 +94,8 @@ $isconnected = $_SESSION['uid'];
     <?php } ?>
 
     <div class="timeline-thumbnail" title="<?=$title;?>">
-    <div class="timeline-thumbnail-content" style="background-image: url(<?=$thumbnail;?>);"><a href="<?php if ($youtubeid == "" && $peertubeid == "") { echo $url; } else { echo WEBSITE_URL ?>/watch/<?=$youtubeid.$peertubeid; } ?>" <?php if ($youtubeid == "" && $peertubeid == "") { ?> target="_blank" <?php } ?> style="display:block; width:100%; height:100%;"></a></div>
-    <div class="timeline-title"><a href="<?php if ($youtubeid == "" && $peertubeid == "") { echo $url; } else { echo WEBSITE_URL ?>/watch/<?=$youtubeid.$peertubeid; } ?>" <?php if ($youtubeid == "" && $peertubeid == "") { ?> target="_blank" <?php } ?> style="text-decoration: none;"><span style="color:var(--feedbot-gray); font-size: 12px; text-transform: uppercase;"><?=$media_url;?></span><br /><span style="color:var(--feedbot-title); font-weight:bold;"><?=$title;?></span></a></div>
+    <div class="timeline-thumbnail-content" style="background-image: url(<?=$thumbnail;?>);"><a href="<?php if ($youtubeid == "" && $peertubeid == "") { echo $url; } else { echo WEBSITE_URL ?>/index.php?watch=<?=$youtubeid.$peertubeid; } ?>" <?php if ($youtubeid == "" && $peertubeid == "") { ?> target="_blank" <?php } ?> style="display:block; width:100%; height:100%;"></a></div>
+    <div class="timeline-title"><a href="<?php if ($youtubeid == "" && $peertubeid == "") { echo $url; } else { echo WEBSITE_URL ?>/index.php?watch=<?=$youtubeid.$peertubeid; } ?>" <?php if ($youtubeid == "" && $peertubeid == "") { ?> target="_blank" <?php } ?> style="text-decoration: none;"><span style="color:var(--feedbot-gray); font-size: 12px; text-transform: uppercase;"><?=$media_url;?></span><br /><span style="color:var(--feedbot-title); font-weight:bold;"><?=$title;?></span></a></div>
     </div>
 
     <?php if ($lastid == "") {
