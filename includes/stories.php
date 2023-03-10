@@ -22,7 +22,7 @@ foreach ($result as $row) {
     foreach ($result2 as $row2) {
         $current_feed_id = $row2['id'];
         $feed_avatar = $row2['thumbnail'];
-        $feed_avatar = str_replace("/var/www/my_webapp/www/storage/icons/", WEBSITE_URL."/storage/icons/", $feed_avatar);
+        $feed_avatar = str_replace($_SERVER['DOCUMENT_ROOT']."storage/icons/", WEBSITE_URL."/storage/icons/", $feed_avatar);
         $feed_title = $row2['feed_title'];
         $feed_url = $row2['feed_url'];
         $media_url = parse_url($feed_url, PHP_URL_HOST);
@@ -39,10 +39,10 @@ foreach ($result as $row) {
     $peertubeid = $row['peertubeid'];
     $embed = $row['embed'];
     $url = $row['url'];
-    if ($youtubeid !== "") { $url = WEBSITE_URL."/watch/".$youtubeid; }
-    if ($peertubeid !== "") { $url = WEBSITE_URL."/watch/".$peertubeid; }
+    if ($youtubeid !== "") { $url = WEBSITE_URL."/index.php?watch=".$youtubeid; }
+    if ($peertubeid !== "") { $url = WEBSITE_URL."/index.php?watch=".$peertubeid; }
     $thumbnail = $row['thumbnail'];
-    $thumbnail = str_replace("/var/www/my_webapp/www/storage/thumbnails/", WEBSITE_URL."/storage/thumbnails/", $thumbnail);
+    $thumbnail = str_replace($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/", WEBSITE_URL."/storage/thumbnails/", $thumbnail);
     $date = minirelativedate($row['date']);
  
 ?>
@@ -56,8 +56,8 @@ foreach ($result as $row) {
 
         <div style="top:0; width: 100%; height: 200px; background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8) 100%);">  
             <div style="position:absolute; padding: 20px; z-index:5;">
-            <a href="<?=WEBSITE_URL."/feed/".$feed_id; ?>" title="<?php echo $feed_title; ?>"><img src="<?php echo $feed_avatar; ?>" style="height: 60px; aspect-ratio: 1 / 1; border-radius: 50%; float: left;" /></a>
-                <div style="color:#FFF; padding-left: 70px; padding-top: 12px; text-shadow: 0px 0px 2px rgba(0,0,0,1);"><a href="<?=WEBSITE_URL."/feed/".$feed_id; ?>" style="color:#FFF; font-weight:bold; text-decoration:none;" title="<?php echo $feed_title; ?>"><?php echo $feed_title; ?></a> <span style="margin-left:8px; color:#D8D8D8;"><?=$date;?></span><br />
+            <a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id; ?>" title="<?php echo $feed_title; ?>"><img src="<?php echo $feed_avatar; ?>" style="height: 60px; aspect-ratio: 1 / 1; border-radius: 50%; float: left;" /></a>
+                <div style="color:#FFF; padding-left: 70px; padding-top: 12px; text-shadow: 0px 0px 2px rgba(0,0,0,1);"><a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id; ?>" style="color:#FFF; font-weight:bold; text-decoration:none;" title="<?php echo $feed_title; ?>"><?php echo $feed_title; ?></a> <span style="margin-left:8px; color:#D8D8D8;"><?=$date;?></span><br />
                 <span style="font-size: 14px; padding-top: -8px;"><?php echo $media_url; ?></span>
                 </div>
             </div>
