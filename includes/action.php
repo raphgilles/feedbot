@@ -204,7 +204,7 @@ if ($youtubeid == "" && $peertubeid == "") {
 $publication .= "\n \n".$url;
 }
 else {
-$publication .= "\n \n".WEBSITE_URL."/watch/".$youtubeid.$peertubeid;
+$publication .= "\n \n".WEBSITE_URL."/index.php?watch=".$youtubeid.$peertubeid;
 }
 $publication .= " via @feedbot@tooter.social";
 $article_id = cq("".$_POST['article_id']."");
