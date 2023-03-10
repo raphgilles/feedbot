@@ -1,4 +1,8 @@
 <?php
+// Visitor language retrieval
+// Récupération de la langue du visiteur
+require_once('./assets/lang/lang.php');
+
 if(!file_exists('config.php')){
 	header('location: install.php');
 }
@@ -28,37 +32,52 @@ if($affichage === "global"){
 
 // On vérifie si l'utilisateur est connecté, si non on lui affiche le formulaire de connexion
 if(!is_null($isconnected) && $watch == "" && $feed == "" && $affichage !== "global"){
-	if($affichage === ''){
-		include('home.php');
+	switch ($affichage) {
+		case '':
+			include('home.php');
+			$x = "yep";
+			break;
+		case 'bookmarks':
+			include('bookmarks.php');
+			$x = "yep";
+			break;
+		case 'add':
+			include('add.php');
+			$x = "yep";
+			break;
+		case 'feeds':
+			include('feeds.php');
+			$x = "yep";
+			break;
+		case 'shares':
+			include('shares.php');
+			$x = "yep";
+			break;
+		case 'signin':
+			include('signin.php');
+			$x = "yep";
+			break;
+		case 'settings':
+			include('settings.php');
+			$x = "yep";
+			break;
+		case 'signout':
+			header('location: '.WEBSITE_URL.'/includes/disconnect.php');
+			break;
+		case 'publish':
+			include('publish.php');
+			$x = "yep";
+			break;
+		case 'search':
+			include('search.php');
+			$x = "yep";
+			break;
+		default:
+			$x = "nop";
+			break;
 	}
-	elseif($affichage === 'bookmarks'){
-		include('bookmarks.php');
-	}
-	elseif($affichage === 'add'){
-		include('add.php');
-	}
-	elseif($affichage === 'feeds'){
-		include('feeds.php');
-	}
-	elseif($affichage === 'shares'){
-		include('shares.php');
-	}
-	elseif($affichage === 'signin'){
-		include('signin.php');
-	}
-	elseif($affichage === 'settings'){
-		include('settings.php');
-	}
-	elseif($affichage === 'signout'){
-		header('location: '.WEBSITE_URL.'/includes/disconnect.php');
-	}
-	elseif($affichage === 'publish'){
-		include('publish.php');
-	}
-	elseif($affichage === 'search'){
-		include('search.php');
-	}
-	else{
+
+	if($x === 'nop'){
 ?>
 		<div style="max-width: 700px; min-width: 290px; margin: auto; padding-top: 80px; text-align: center;">
 			<h3 style="margin-bottom: 40px;">Oops. You find a dead Link.</h3>

@@ -63,7 +63,7 @@ if($page == 2){
 	$config .= "// Basics\ndefine('WEBSITE_NAME', '".$website_name."');\n";
 	$config .= "define('WEBSITE_URL', '".$website_url."');\n\n";
 	$config .= "// Links\ndefine('HOME_PAGE', WEBSITE_URL.'/');\n";
-	$config .= "define('GLOBAL_PAGE', WEBSITE_URL.'/?p=global');\ndefine('BOOKMARKS_PAGE', WEBSITE_URL.'/?p=bookmarks');\ndefine('ADD_FEED_PAGE', WEBSITE_URL.'/?p=add');\ndefine('YOUR_FEEDS_PAGE', WEBSITE_URL.'/?p=feeds');\ndefine('STATUSES_PAGE', WEBSITE_URL.'/?p=shares');\ndefine('PUBLISH_PAGE', WEBSITE_URL.'/?p=publish');\ndefine('SETTINGS_PAGE', WEBSITE_URL.'/?p=settings');\n\n// Visitor language retrieval\n// Récupération de la langue du visiteur\nrequire_once('./assets/lang/lang.php');\n\n";
+	$config .= "define('GLOBAL_PAGE', WEBSITE_URL.'/?p=global');\ndefine('BOOKMARKS_PAGE', WEBSITE_URL.'/?p=bookmarks');\ndefine('ADD_FEED_PAGE', WEBSITE_URL.'/?p=add');\ndefine('YOUR_FEEDS_PAGE', WEBSITE_URL.'/?p=feeds');\ndefine('STATUSES_PAGE', WEBSITE_URL.'/?p=shares');\ndefine('PUBLISH_PAGE', WEBSITE_URL.'/?p=publish');\ndefine('SETTINGS_PAGE', WEBSITE_URL.'/?p=settings');\n\n";
 	$config .= "//DB Params\n\$servername = '".$dbhost."';\n";
 	$config .= "\$username = '".$dbuser."';\n";
 	$config .= "\$password = '".$dbpassword."';\n";
@@ -141,11 +141,12 @@ elseif($page == 2){
 elseif($page == 3){
 	$sql = file_get_contents($dbfile);
 	$conn->multi_query($sql);
-	
-	echo "<p style=\"text-align:center;\">The database has been successfully created. Installation is complete!</p>";
 
+	chmod('./includes/mastophp/', 0775);
 	unlink('install.php');
 	unlink('feedbot.sql');
+
+	echo "<p style=\"text-align:center;\">The database has been successfully created. Installation is complete!</p>";
 ?>
 	<script type="text/javascript">
 		setTimeout(function(){
