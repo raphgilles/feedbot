@@ -84,7 +84,7 @@ foreach ($result as $row){
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@v5.3.2/dist/amplitude.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
-<link rel="stylesheet" href="<?php echo WEBSITE_URL ?>/assets/functions.js">
+<script src="<?php echo WEBSITE_URL."/assets/functions.js"; ?>"></script>
 <link rel="stylesheet" href="<?php echo WEBSITE_URL ?>/assets/colors-<?=$theme;?>.css" id="theme">
 <link rel="stylesheet" href="<?php echo WEBSITE_URL ?>/assets/style.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@v5.3.2/dist/amplitude.js"></script>
@@ -287,7 +287,7 @@ a.learn-more{
 
         <div class="time-container">
             <span class="current-time">
-                <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
+                <span class="amplitude-current-time"></span>
             </span>
             <span class="duration">
                 <span class="amplitude-duration-time"></span>
