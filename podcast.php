@@ -223,7 +223,6 @@ div#single-song-player {
   border-radius: 10px;
   margin: auto;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  margin-top: 50px;
   width: 100%;
   max-width: 460px;
   -webkit-font-smoothing: antialiased; }
@@ -276,11 +275,11 @@ a.learn-more{
 <body>
 <?php include("./template-parts/sidebar.php") ?>
 <section class="home-section" style="background-color:#11101D99;">
-<div style="max-width:600px; margin:auto; margin-top: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center;">
+<div style="position:relative; height:100vh; max-width:600px; margin:auto; border-radius: 12px; display: flex; justify-content: center; align-items: center;">
 
-<div class="video_cinema" style="max-width:800px; max-height:95%; margin-left:initial; background-image: url(<?=$thumbnail;?>); background-size:cover; border-radius: 12px; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
+<div class="video_cinema" style="position:relative; width: 100%; max-width:800px; max-height:95%; margin:auto; background-image: url(<?=$thumbnail;?>); background-size:cover; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
 
-<div id="single-song-player" style="position:relative; z-index:2;">
+<div id="single-song-player" style="position:absolute; z-index:2;">
     <img data-amplitude-song-info="cover_art_url"/>
       <div class="bottom-container">
         <progress class="amplitude-song-played-progress" id="song-played-progress"></progress>
