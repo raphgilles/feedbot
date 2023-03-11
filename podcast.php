@@ -63,7 +63,7 @@ foreach ($result as $row){
 }
 ?>
 <head>
-<title><?=$title;?> | <?=WEBSITE_NAME;?> Podcasts</title>
+<title><?=$title;?> - <?=$feed_name;?> | <?=WEBSITE_NAME;?> Podcasts</title>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,user-scalable=no, shrink-to-fit=yes" />
 <meta property="og:title" content="<?=$title;?> | <?=WEBSITE_NAME;?>" />
 <meta property="og:image" content="<?=$thumbnail;?>" />
