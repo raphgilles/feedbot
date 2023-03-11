@@ -21,7 +21,7 @@ foreach ($result as $row){
 }
 ?>
 <head>
-<title><?=$title;?> | <?=WEBSITE_NAME;?></title>
+<title><?=$title;?> | <?=WEBSITE_NAME;?> Podcast</title>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,user-scalable=no, shrink-to-fit=yes" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@v5.3.2/dist/amplitude.js"></script>
 
@@ -161,7 +161,6 @@ div.bottom-container {
 */
 div#single-song-player {
   margin: auto;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   width: 100%;
   -webkit-font-smoothing: antialiased; }
   div#single-song-player img[data-amplitude-song-info="cover_art_url"] {
@@ -208,38 +207,33 @@ a.learn-more{
 </style>
 </head>
 
-<body>
-<div class="video_cinema" style="max-width:800px; margin-left:initial; background-image: url(<?=$thumbnail;?>); background-size:cover; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
+<body style="background-color:#202136; height:100%;">
 
-<div id="single-song-player" style="position:relative; z-index:2;">
-    <div style="background-image:url(<?=$thumbnail;?>); background-size:cover; background-position:center; width:100%; aspect-ratio:16/9;"><a href="<?=WEBSITE_URL."/podcast/".$id;?>" target="_blank" style="display:block; width:100%; height:100%;"></a></div>
-      <div class="bottom-container">
-        <progress class="amplitude-song-played-progress" id="song-played-progress"></progress>
+<div  style="position:absolute; background-color:#313252; z-index:2; height:calc(100% - 115px); width:100%;">
+  <div id="single-song-player">
+      <div style="position:relative; background-image:url(<?=$thumbnail;?>); background-size:cover; background-position:center; width:100%;"><a href="<?=WEBSITE_URL."/podcast/".$id;?>" target="_blank" style="display:block; width:100%; height:100%;"></a></div>
+        <div class="bottom-container">
+          <progress class="amplitude-song-played-progress" id="song-played-progress"></progress>
 
-        <div class="time-container">
-            <span class="current-time">
-                <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
-            </span>
-            <span class="duration">
-                <span class="amplitude-duration-time"></span>
-            </span>
-        </div>
+          <div class="time-container">
+              <span class="current-time">
+                  <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
+              </span>
+              <span class="duration">
+                  <span class="amplitude-duration-time"></span>
+              </span>
+          </div>
 
-        <div class="control-container">
-          <div class="amplitude-play-pause" id="play-pause"></div>
-          <div class="meta-container">
-            <span data-amplitude-song-info="name" class="song-name"></span>
-            <span data-amplitude-song-info="artist"></span>
+          <div class="control-container">
+            <div class="amplitude-play-pause amplitude-playing" id="play-pause"></div>
+            <div class="meta-container">
+              <span data-amplitude-song-info="name" class="song-name"></span>
+              <span data-amplitude-song-info="artist"></span>
+            </div>
           </div>
         </div>
-      </div>
+  </div>
 </div>
-
-<script>
-$( "#play-pause" ).click(function() {
-  $(".video_cinema").show();
-});
-</script>
 
 <script id="rendered-js">
     Amplitude.init({
@@ -276,6 +270,10 @@ $( "#play-pause" ).click(function() {
 
     Amplitude.setSongPlayedPercentage( ( parseFloat( x ) / parseFloat( this.offsetWidth) ) * 100 );
   });
+</script>
+
+<script type="text/javascript">
+  $("#play-pause").addClass("amplitude-playing");
 </script>
 
 <div style="width:100%; position:absolute; margin:auto; bottom:15px; font-size:12px; text-align:center;">Propulsé par <a href="https://521dimensions.com/open-source/amplitudejs" style="color:#FFF;" target="_blank">AmplitudeJS</a></div>
