@@ -188,10 +188,10 @@ progress[value]::-webkit-progress-bar {
   background-color: #313252; }
 
 progress[value]::-moz-progress-bar {
-  background-color: #00a0ff; }
+  background-color: var(--feedbot-purple); }
 
 progress[value]::-webkit-progress-value {
-  background-color: #00a0ff; }
+  background-color: var(--feedbot-purple); }
 
 /*
   Small only
@@ -277,7 +277,7 @@ a.learn-more{
 <section class="home-section" style="background-color:#11101D99;">
 <div style="position:relative; height:100vh; max-width:600px; margin:auto; border-radius: 12px; display: flex; justify-content: center; align-items: center;">
 
-<div class="video_cinema" style="position:relative; width: 100%; max-width:800px; max-height:95%; margin:auto; background-image: url(<?=$thumbnail;?>); background-size:cover; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
+<div class="video_cinema" style="position:relative; width: 100%; max-width:1200px; max-height:95%; margin:auto; background-image: url(<?=$thumbnail;?>); background-size:cover; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
 
 <div id="single-song-player" style="position:absolute; z-index:2;">
     <img data-amplitude-song-info="cover_art_url"/>
@@ -325,7 +325,7 @@ $( "#play-pause" ).click(function() {
         "cover_art_url": "<?=$thumbnail;?>",
         "duration": "60"
       },
-    ]
+    ],
   });
 
   window.onkeydown = function(e) {
