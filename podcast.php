@@ -278,7 +278,7 @@ a.learn-more{
 <section class="home-section" style="background-color:#11101D99;">
 <div style="max-width:600px; margin:auto; margin-top: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center;">
 
-<div class="video_cinema" style="max-width:800px; margin-left:initial; background-image: url(<?=$thumbnail;?>); background-size:cover; border-radius: 12px; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
+<div class="video_cinema" style="max-width:800px; max-height:95%; margin-left:initial; background-image: url(<?=$thumbnail;?>); background-size:cover; border-radius: 12px; z-index:0; aspect-ratio: 1 / 1; display:none;" ></div>
 
 <div id="single-song-player" style="position:relative; z-index:2;">
     <img data-amplitude-song-info="cover_art_url"/>
