@@ -123,10 +123,10 @@ progress[value]::-webkit-progress-bar {
   background-color: #313252; }
 
 progress[value]::-moz-progress-bar {
-  background-color: #00a0ff; }
+  background-color: var(--feedbot-purple); }
 
 progress[value]::-webkit-progress-value {
-  background-color: #00a0ff; }
+  background-color: var(--feedbot-purple); }
 
 /*
   Small only
