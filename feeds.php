@@ -38,7 +38,7 @@ foreach($result as $row){
 	$feed_query =  mysqli_fetch_array($sql_query);
 	$title = $feed_query['feed_title'];
 	$thumbnail = $feed_query['thumbnail'];
-	$thumbnail = str_replace("".$_SERVER['DOCUMENT_ROOT']."storage/icons/", WEBSITE_URL."/storage/icons/", $thumbnail);
+	$thumbnail = str_replace(WEBSITE_URI."storage/icons/", WEBSITE_URL."/storage/icons/", $thumbnail);
 	$url = $feed_query['feed_url'];
 	$is_active = $row['is_active'];
 	$share_title = $row['share_title'];
@@ -52,10 +52,10 @@ foreach($result as $row){
 
 		<div class="feed_item feed_<?=$sub_id;?>" title="<?=$title;?>">
 			<div class="thumbnail_feed" style="background-image: url(<?=$thumbnail;?>);">
-				<a href="<?=WEBSITE_URL."/feed/".$feed_id;?>" style="display: block; width: 100%; height: 100%"></a>
+				<a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="display: block; width: 100%; height: 100%"></a>
 			</div>
 			<p>
-				<a href="<?=WEBSITE_URL."/feed/".$feed_id;?>" style="color:var(--feedbot-title); vertical-align: middle; font-weight: bold; padding-top: 4px; text-decoration: none;"> <?=$title;?></a>
+				<a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:var(--feedbot-title); vertical-align: middle; font-weight: bold; padding-top: 4px; text-decoration: none;"> <?=$title;?></a>
 			</p>
 			<a href="<?=$url;?>" style="color:var(--feedbot-text);"><?=substr($url,0,50);?>...</a>
 			<p style="margin-top: 10px;">
