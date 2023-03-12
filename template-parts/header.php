@@ -288,6 +288,6 @@ if ($theme == "") {$theme = "dark"; }
 
 <?php if($article !== "") {?><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@{{version-number}}/dist/amplitude.js"></script><?php } ?>
 <script src="<?php echo WEBSITE_URL."/assets/jquery-3.6.3.min.js"; ?>"></script>
-<script src="<?php echo WEBSITE_URL."/assets/functions.js"; ?>"></script>
+<?php include(WEBSITE_URI.'/assets/functions.js.php'); ?>
 
 </head>
