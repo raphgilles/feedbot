@@ -1,15 +1,16 @@
 <div class="contenair-home">
 	<div class="title">
-		<i class="fa fa-bookmark" aria-hidden="true"></i> Vos marque-pages
+		<i class="fa fa-bookmark" aria-hidden="true" style="margin-right:5px;"></i> Vos marque-pages
 	</div>
-	<div style="display:table-row; clear:both;">
-		<div class="widget-home">
 
-<?php include('./template-parts/widget-suggestions.php');?>
-<?php include('./template-parts/footer.php'); ?>
+	<div class="widget-home" style="display:unset;">
+		<?php include('./template-parts/widget-welcome.php'); ?>
+		<?php include('./template-parts/widget-suggestions.php'); ?>
+		<?php include('./template-parts/widget-shares.php'); ?>
+		<?php include('./template-parts/widget-funding.php'); ?>
+		<?php include('./template-parts/footer.php'); ?>
+	</div>
 
-		</div>
-		<div>
 <?php
 
 $sql = "SELECT * FROM articles_published WHERE uid = '$user' AND bookmarked = '1' ORDER BY id DESC LIMIT 10";
@@ -174,5 +175,3 @@ foreach($result as $row){
 <?php } ?>
 
 		</div>
-	</div>
-</div>
