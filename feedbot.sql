@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 08 mars 2023 à 11:54
+-- Généré le : dim. 12 mars 2023 à 06:56
 -- Version du serveur : 10.5.18-MariaDB-0+deb11u1
 -- Version de PHP : 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `feedbot_2`
+-- Base de données : `feedbot`
 --
 
 -- --------------------------------------------------------
@@ -40,7 +40,8 @@ CREATE TABLE `articles` (
   `embed` text DEFAULT NULL,
   `id_site` bigint(20) NOT NULL,
   `date` varchar(200) NOT NULL,
-  `shares_count` bigint(20) NOT NULL DEFAULT 0
+  `shares_count` bigint(20) NOT NULL DEFAULT 0,
+  `404_count` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -136,8 +137,9 @@ CREATE TABLE `statuses` (
 --
 
 CREATE TABLE `tasks` (
-  `feeds_last_id` int(11) NOT NULL,
-  `articles_last_id` int(11) NOT NULL
+  `feeds_last_id` int(11) NOT NULL DEFAULT 0,
+  `articles_last_id` int(11) NOT NULL DEFAULT 0,
+  `404_last_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
