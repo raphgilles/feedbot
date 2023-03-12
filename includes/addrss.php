@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include(__DIR__ ."/../config.php");
-include('functions.php');
+include('../config.php');
+include('./functions.php');
 
 $aka = $_SESSION['akainstance'];
 $user = $_SESSION['uid'];
@@ -34,9 +34,6 @@ $media_url = str_replace("https://rss.", "https://", $media_url);
 $media_url = str_replace("https://backend.", "https://", $media_url);
 
 
-
-
-
 $sql = "SELECT * FROM feeds WHERE feed_url = '$feed'";
 $result = mysqli_query($conn, $sql);
 foreach ($result as $row) {
@@ -44,7 +41,14 @@ foreach ($result as $row) {
 	$id_feed = $feed_id;
 }
 
-if ($feed_id !== NULL) {
+$sql = "SELECT * FROM feeds_published WHERE feed_id = '$feed_id' AND uid = '$user'";
+$result = mysqli_query($conn, $sql);
+foreach($result as $row) {
+	$sub_id = $row['id'];
+	if ($sub_id !== "") { $feedexists = 1; }
+}
+
+if ($feed_id !== NULL && $sub_id == "") {
 	$sql = "INSERT INTO feeds_published (feed_id, uid) values ('$feed_id', '$user')";
 	mysqli_query($conn, $sql);
 
@@ -123,6 +127,15 @@ elseif ($feed_id === NULL) {
 				}
 
 				$thumbnail = WEBSITE_URL."/assets/nopreview.png";  
+
+				$enclosure = $item->enclosure['url'];
+		        $enclosure = reconstruct_url($enclosure);
+		        $is_audio = pathinfo($enclosure, PATHINFO_EXTENSION);
+		        if ($is_audio == "mp3" OR $is_audio == "aac" OR $is_audio == "wav") {
+		            $embed = $enclosure;
+		            $thumbnail = $item->children('itunes', true)->image->attributes()->href;
+		        }
+
 				$page_content = file_get_contents($url);
 				$dom_obj = new DOMDocument();
 				$dom_obj->loadHTML($page_content);
@@ -144,14 +157,6 @@ elseif ($feed_id === NULL) {
 						$platform = $meta->getAttribute('content');
 					}
 				}
-
-				$enclosure = $item->enclosure['url'];
-		        $enclosure = reconstruct_url($enclosure);
-		        $is_audio = pathinfo($enclosure, PATHINFO_EXTENSION);
-		        if ($is_audio == "mp3" OR $is_audio == "aac" OR $is_audio == "wav") {
-		            $embed = $enclosure;
-		            $thumbnail = $item->children('itunes', true)->image->attributes()->href;
-		        }
 				
 				if ($media_url == "https://www.ouest-france.fr") { $thumbnail = $item->enclosure['url']; }
 		        if ($media_url == "https://www.nasa.gov") { $thumbnail = $item->enclosure['url']; }
