@@ -78,9 +78,9 @@ foreach ($rss->channel->item as $item) {
         if ($media_url == "https://www.nasa.gov") { $thumbnail = $item->enclosure['url']; }
         if ($media_url == "https://www.humanite.fr") { $thumbnail = $item->enclosure['url']; }
         if ($media_url == "https://arretsurimages.net") { $thumbnail = $item->enclosure['url']; }
-        if ($media_url == "https://www.liberation.fr") { $thumbnail = libe($thumbnail); }
+        if ($media_url == "https://www.liberation.fr" && $thumbnail !== WEBSITE_URL."/assets/nopreview.png") { $thumbnail = libe($thumbnail); }
         if ($media_url == "https://www.cowcotland.com" && $thumbnail !== "") { $thumbnail = $media_url.$thumbnail; }
-        if ($thumbnail == "") { $thumbnail = "https://feedbot.net/assets/nopreview.png"; }
+        if ($thumbnail == "") { $thumbnail = WEBSITE_URL."/assets/nopreview.png"; }
         $thumbnail = reconstruct_url($thumbnail);
         
         if ($platform == "PeerTube") {
