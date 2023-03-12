@@ -6,7 +6,7 @@ $isconnected = $_SESSION['uid'];
     $article_id = $row['id'];
     $feed_id = $row['feed_id'];
     $thumbnail = $row['thumbnail'];
-    $thumbnail = str_replace($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/", "storage/thumbnails/", $thumbnail);
+    $thumbnail = str_replace(WEBSITE_URI, "", $thumbnail);
     $title = $row['title'];
     $url = $row['url'];
 
@@ -43,7 +43,7 @@ $isconnected = $_SESSION['uid'];
     foreach ($result as $row) {
         $feed_name = $row['feed_title'];
         $feed_avatar = $row['thumbnail'];
-        $feed_avatar = str_replace($_SERVER['DOCUMENT_ROOT']."storage/icons/", "storage/icons/", $feed_avatar);
+        $feed_avatar = str_replace(WEBSITE_URI, "", $feed_avatar);
         $feed_url = $row['feed_url'];
         $site_id = $row['site_id'];
         $is_sensitive = $row['is_sensitive'];

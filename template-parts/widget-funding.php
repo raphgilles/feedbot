@@ -1,4 +1,4 @@
-<div class="widget-home-content small_screens_hide" style="margin-top: 20px; text-align: center;">
+<div class="widget-home-content small_screens_hide" style="margin-bottom: 20px; text-align: center;">
 
 <h4 style="font-size:20px; margin-bottom: 20px; color:var(--feedbot-title);"><?=ENJOY_USING;?> <?=WEBSITE_NAME;?> ?</h4>
 

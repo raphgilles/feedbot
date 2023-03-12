@@ -1,7 +1,6 @@
-<div class="widget-home-content">
-<div style="margin-bottom: 16px;">
+<div class="widget-home-content" style="margin-bottom: 20px;">
+
 <p><?=WELCOME;?> <?=$displayname;?>.</p>
-</div>
 
 <?php if ($totalfeeds == "0") { ?>
 <div style="margin-bottom: 16px;">
@@ -10,7 +9,6 @@
 
 <?php } ?>
 
-<div>
 	<p><?=WHAT_HAVE_YOU_TO_SAY;?> ?</p>
 	<form class="publish" style="padding: 0px;">
 	<input type="hidden" name="action" value="publish">
@@ -33,7 +31,5 @@
 
 	</div>
 	</form>
-	</div>
 
 </div>
-<div style="height:20px;" class="small_screens_hide"></div>

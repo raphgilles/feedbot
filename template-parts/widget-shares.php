@@ -1,4 +1,4 @@
-<div class="widget-home-content shares-widget" style="margin-top:20px;">
+<div class="widget-home-content shares-widget widget_shares" style="margin-bottom:20px;">
 
 <h4><i class="fa fa-mastodon" aria-hidden="true" style="color:var(--feedbot-title); font-size: 24px; margin-right: 5px; vertical-align: middle;"></i> <?=PUBLIC_SHARES;?></h4>
 
@@ -76,5 +76,8 @@ $result2 = mysqli_query($conn, $sql2);
 	}
 }
 ?>
-
 </div>
+
+<?php if ($i == 0) { ?> <script type="text/javascript">
+    $(".widget_shares").hide();
+</script> <?php } ?>

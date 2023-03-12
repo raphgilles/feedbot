@@ -1,4 +1,4 @@
-<div class="widget-home-content small_screens_hide">
+<div class="widget-home-content small_screens_hide widget_suggestions" style="margin-bottom:20px;">
 
 <h4 style="color:var(--feedbot-title);">Suggestions</h4>
 
@@ -17,7 +17,7 @@ foreach ($result as $row) {
 	if ($i < 5 && $is_followed == NULL) {
 	$feed_name = $row['feed_title'];
 	$feed_avatar = $row['thumbnail'];
-	$feed_avatar = str_replace($_SERVER['DOCUMENT_ROOT']."storage/icons/", WEBSITE_URL."/storage/icons/", $feed_avatar);
+	$feed_avatar = str_replace(WEBSITE_URI."storage/icons/", WEBSITE_URL."/storage/icons/", $feed_avatar);
 	$feed_url = $row['feed_url'];
 	$media_url = parse_url($feed_url, PHP_URL_HOST);
     $media_url = str_replace("api.", "", $media_url);
@@ -53,7 +53,7 @@ foreach ($result as $row) {
         </div>
 
 		<div style="margin-left: 74px; margin-right: 30px; overflow: hidden; padding-top: 12px; line-height: 16px;">
-			<a href="<?= WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;"><?=truncate($feed_name,30);?></a> <?php if ($youtubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:20px; margin-left: 4px; margin-top: 1px; vertical-align: top;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:14px; margin-left: 5px; vertical-align: middle;" /><?php } ?><br />
+			<a href="<?= WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;"><?=truncate($feed_name,30);?></a> <?php if ($youtubeid !== "" && $youtubeid !== NULL) { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:20px; margin-left: 4px; margin-top: 1px; vertical-align: top;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:14px; margin-left: 5px; vertical-align: middle;" /><?php } ?><br />
 			<span style="font-size: 12px;"><?=$media_url;?></span>
 		</div>
 	</div>
@@ -68,3 +68,7 @@ $is_followed = NULL;
 ?>
 
 </div>
+
+<?php if ($i == 0) { ?> <script type="text/javascript">
+    $(".widget_suggestions").hide();
+</script> <?php } ?>
