@@ -74,13 +74,13 @@ foreach ($result as $row) {
 
         if ($thumbnail !== WEBSITE_URL."/assets/nopreview.png" && $media_url !== "www.guettapen.com") {
             $folder = date('Y_m');
-            if (!file_exists($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder)) {
-            mkdir($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder, 0755, true);
+            if (!file_exists(WEBSITE_URI."storage/thumbnails/".$folder)) {
+            mkdir(WEBSITE_URI."storage/thumbnails/".$folder, 0755, true);
             }
 
             $thumbnail = reconstruct_url($thumbnail);
             $type = get_headers($thumbnail, 1)["Content-Type"];
-            $article_thumb = $_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".jpg";
+            $article_thumb = WEBSITE_URI."storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".jpg";
             file_put_contents($article_thumb, file_get_contents($thumbnail));
             $maxwidth = "1280";
             list($width, $height) = getimagesize($article_thumb);
@@ -130,7 +130,7 @@ foreach ($result as $row) {
     }
 }
 
-$thumbnail = str_replace($_SERVER['DOCUMENT_ROOT'], WEBSITE_URL."/", $thumbnail);
+$thumbnail = str_replace(WEBSITE_URI, WEBSITE_URL."/", $thumbnail);
 ?>
 
 <div class="timeline-thumbnail" style="width: 600px; margin:auto; margin-bottom: 10px; border-radius: 12px; border: 1px solid var(--feedbot-thumbnails-borders); cursor: initial; overflow: hidden; text-overflow: ellipsis;">
