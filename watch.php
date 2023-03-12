@@ -43,7 +43,7 @@ foreach ($result as $row){
 	$feed_name = $row['feed_title'];
 	$site_id = $row['site_id'];
 	$feed_thumbnail = $row['thumbnail'];
-	$feed_thumbnail = str_replace(WEBSITE_URI, WEBSITE_URL."/storage/icons/", $feed_thumbnail);
+	$feed_thumbnail = str_replace(WEBSITE_URI, WEBSITE_URL."/", $feed_thumbnail);
 	$feed_url = $row['feed_url'];
 }
 
@@ -74,7 +74,7 @@ $thumbnail_cinema = $thumbnail;
 		<a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id;?>">
 			<img src="<?=$feed_thumbnail;?>"  style="border-radius:50%; aspect-ratio: 1/1; width:60px; float:left; margin-right:20px;" title="<?=$feed_name;?>" />
 		</a>
-		<div title="<?=$feed_name;?>" style="padding-top: 4px; line-height:16px;">
+		<div title="<?=$feed_name;?>" style="line-height:18px;">
 			<a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;">
 				<?=$feed_name;?>
 			</a>
