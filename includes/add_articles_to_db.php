@@ -12,12 +12,12 @@ if($article_db_id == "") {
 
     if ($thumbnail !== WEBSITE_URL."/assets/nopreview.png") {
 	$folder = date('Y_m');
-	if (!file_exists($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder)) {
-    mkdir($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder, 0755, true);
+	if (!file_exists(WEBSITE_URI."storage/thumbnails/".$folder)) {
+    mkdir(WEBSITE_URI."storage/thumbnails/".$folder, 0755, true);
 	}
 	$thumbnail = reconstruct_url($thumbnail);
     $extension = pathinfo($thumbnail, PATHINFO_EXTENSION);
-    $article_thumb = $_SERVER['DOCUMENT_ROOT']."storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".".$extension;
+    $article_thumb = WEBSITE_URI."storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".".$extension;
     file_put_contents($article_thumb, file_get_contents($thumbnail));
     $maxwidth = "1280";
 	list($width, $height) = getimagesize($article_thumb);
@@ -34,7 +34,7 @@ if($article_db_id == "") {
 	if ($extension == "jpeg") { $source = imagecreatefromjpeg($article_thumb); $thumb = imagecreatetruecolor($newwidth, $newheight); imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height); imagejpeg($thumb, $article_thumb, 50); }
 	if ($extension == "png") { $source = imagecreatefrompng($article_thumb); $thumb = imagecreatetruecolor($newwidth, $newheight); imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height); imagejpeg($thumb, $article_thumb, 50); }
 	if ($extension == "webp") { $source = imagecreatefromwebp($article_thumb); $thumb = imagecreatetruecolor($newwidth, $newheight); imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height); imagejpeg($thumb, $article_thumb, 50); }
-	$thumbnail = str_replace("/includes/../", "/", $article_thumb);
+	$thumbnail = str_replace(WEBSITE_URI, "", $article_thumb);
     }
 
 	$sql = "INSERT INTO articles (title, excerpt, url, thumbnail, feed_id, platform, youtubeid, peertubeid, embed, id_site, date) values ('$title', '$description', '$url', '$thumbnail', '$id_feed', '$platform', '$youtube_id', '$peertubeid', '$embed', '$id_site', '$article_date')";
