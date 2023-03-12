@@ -3,9 +3,6 @@ if(!file_exists('config.php')){
 	header('location: install.php');
 }
 include("template-parts/header.php");
-// Visitor language retrieval
-// Récupération de la langue du visiteur
-require_once('./assets/lang/lang.php');
 ?>
 
 <body ontouchstart="">
