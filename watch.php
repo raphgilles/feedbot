@@ -43,7 +43,7 @@ foreach ($result as $row){
 	$feed_name = $row['feed_title'];
 	$site_id = $row['site_id'];
 	$feed_thumbnail = $row['thumbnail'];
-	$feed_thumbnail = str_replace("".$_SERVER['DOCUMENT_ROOT']."storage/icons/", WEBSITE_URL."/storage/icons/", $feed_thumbnail);
+	$feed_thumbnail = str_replace(WEBSITE_URI, WEBSITE_URL."/storage/icons/", $feed_thumbnail);
 	$feed_url = $row['feed_url'];
 }
 
@@ -71,11 +71,11 @@ $thumbnail_cinema = $thumbnail;
 
 <div class="video_item">
 	<div style="height:80px;">
-		<a href="<?=WEBSITE_URL."/feed/".$feed_id;?>">
+		<a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id;?>">
 			<img src="<?=$feed_thumbnail;?>"  style="border-radius:50%; aspect-ratio: 1/1; width:60px; float:left; margin-right:20px;" title="<?=$feed_name;?>" />
 		</a>
 		<div title="<?=$feed_name;?>" style="padding-top: 4px; line-height:16px;">
-			<a href="<?=WEBSITE_URL."/feed/".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;">
+			<a href="<?=WEBSITE_URL."/index.php?feed=".$feed_id;?>" style="color:var(--feedbot-title); font-weight: bold; text-decoration: none;">
 				<?=$feed_name;?>
 			</a>
 <?php if ($youtubeid !== NULL && $youtubeid !== "") { ?>
@@ -324,7 +324,7 @@ $thumbnail_cinema = $thumbnail;
 			$sql = "SELECT feed_title FROM feeds WHERE id = '$feed_id_suggestions'";
 			$result = mysqli_query($conn, $sql);
 			$thumbnail = $row['thumbnail'];
-			$thumbnail = str_replace($_SERVER['DOCUMENT_ROOT']."storage/thumbnails/", WEBSITE_URL."/storage/thumbnails/", $thumbnail);
+			$thumbnail = str_replace(WEBSITE_URI."storage/thumbnails/", WEBSITE_URL."/storage/thumbnails/", $thumbnail);
 
 			foreach($result as $row){
 				$feed_name = $row['feed_title'];
