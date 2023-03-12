@@ -23,14 +23,15 @@ $totalposts = mysqli_num_rows($result);
 	</div>
 <?php } ?>
 
-	<div style="clear:both;">
+
 		<div class="widget-home" style="display: unset;">
 <?php include('./template-parts/widget-welcome.php'); ?>
 <?php include('./template-parts/widget-suggestions.php'); ?>
 <?php include('./template-parts/widget-shares.php'); ?>
 <?php include('./template-parts/widget-funding.php'); ?>
-<?php include('template-parts/footer.php'); ?>
+<?php include('./template-parts/footer.php'); ?>
 		</div>
+
 		<div>
 
 <?php if ($totalfeeds == "0") { ?>
