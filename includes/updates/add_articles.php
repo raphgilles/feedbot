@@ -7,12 +7,12 @@ if($article_db_id == "") {
 
 	if ($thumbnail !== WEBSITE_URL."/assets/nopreview.png") {
 	$folder = date('Y_m');
-	if (!file_exists(__DIR__."/../../storage/thumbnails/".$folder)) {
-    mkdir(__DIR__."/../../storage/thumbnails/".$folder, 0755, true);
+	if (!file_exists(WEBSITE_URI."storage/thumbnails/".$folder)) {
+    mkdir(WEBSITE_URI."storage/thumbnails/".$folder, 0755, true);
 	}
 	$thumbnail = reconstruct_url($thumbnail);
     $type = get_headers($thumbnail, 1)["Content-Type"];
-    $article_thumb = __DIR__."/../../storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".jpg";
+    $article_thumb = WEBSITE_URI."storage/thumbnails/".$folder."/".md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true)).".jpg";
     file_put_contents($article_thumb, file_get_contents($thumbnail));
     $maxwidth = "1280";
 	list($width, $height) = getimagesize($article_thumb);
@@ -28,7 +28,7 @@ if($article_db_id == "") {
 	if ($type == "image/jpeg") { $source = imagecreatefromjpeg($article_thumb); $thumb = imagecreatetruecolor($newwidth, $newheight); imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height); imagejpeg($thumb, $article_thumb, 75); }
     if ($type == "image/png") { $source = imagecreatefrompng($article_thumb); $thumb = imagecreatetruecolor($newwidth, $newheight); imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height); imagejpeg($thumb, $article_thumb, 75); }
     if ($type == "image/webp") { $source = imagecreatefromwebp($article_thumb); $thumb = imagecreatetruecolor($newwidth, $newheight); imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height); imagejpeg($thumb, $article_thumb, 75); }
-	$thumbnail = str_replace("/includes/updates/../../", "/", $article_thumb);
+	$thumbnail = str_replace(WEBSITE_URI, "", $article_thumb);
     }
 
 	$sql = "INSERT INTO articles (title, excerpt, url, thumbnail, feed_id, platform, youtubeid, peertubeid, embed, id_site, date) values ('$title', '$description', '$url', '$thumbnail', '$feed_id', '$platform', '$youtube_id', '$peertubeid', '$embed', '$site_id', '$article_date')";
