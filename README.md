@@ -6,9 +6,9 @@ php{version}-curl<br />
 php{version}-mysql<br />
 php{version}-gd<br />
 
-**Ajouter le bouton Telegram dans les paramètres utilisateur :**
-https://core.telegram.org/widgets/login
-Choisir "Redirect to URL", à faire pointer vers : https://votredomaine.tld/includes/telegram.php
+**Ajouter le bouton Telegram dans les paramètres utilisateur :**<br />
+https://core.telegram.org/widgets/login<br />
+Choisir "Redirect to URL", à faire pointer vers : https://votredomaine.tld/includes/telegram.php<br />
 
 **Sources :**<br />
 MastoPHP : https://github.com/StefOfficiel/MastoPHP<br />
