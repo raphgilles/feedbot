@@ -61,9 +61,9 @@ if($page == 2){
 
 	$config = "<?php\n";
 	$config .= "// Basics\ndefine('WEBSITE_NAME', '".$website_name."');\n";
-	$config .= "define('WEBSITE_URL', '".$website_url."');\n\n";
+	$config .= "define('WEBSITE_URL', '".$website_url."');\ndefine('WEBSITE_URI', '".$dir."/');\n\n";
 	$config .= "// Links\ndefine('HOME_PAGE', WEBSITE_URL.'/');\n";
-	$config .= "define('GLOBAL_PAGE', WEBSITE_URL.'/?p=global');\ndefine('BOOKMARKS_PAGE', WEBSITE_URL.'/?p=bookmarks');\ndefine('ADD_FEED_PAGE', WEBSITE_URL.'/?p=add');\ndefine('YOUR_FEEDS_PAGE', WEBSITE_URL.'/?p=feeds');\ndefine('STATUSES_PAGE', WEBSITE_URL.'/?p=shares');\ndefine('PUBLISH_PAGE', WEBSITE_URL.'/?p=publish');\ndefine('SETTINGS_PAGE', WEBSITE_URL.'/?p=settings');\n\n";
+	$config .= "define('GLOBAL_PAGE', WEBSITE_URL.'/?p=global');\ndefine('BOOKMARKS_PAGE', WEBSITE_URL.'/?p=bookmarks');\ndefine('ADD_FEED_PAGE', WEBSITE_URL.'/?p=add');\ndefine('YOUR_FEEDS_PAGE', WEBSITE_URL.'/?p=feeds');\ndefine('STATUSES_PAGE', WEBSITE_URL.'/?p=shares');\ndefine('PUBLISH_PAGE', WEBSITE_URL.'/?p=publish');\ndefine('SETTINGS_PAGE', WEBSITE_URL.'/?p=settings');\n\ninclude_once(WEBSITE_URI.'assets/lang/lang.php');\n\n";
 	$config .= "//DB Params\n\$servername = '".$dbhost."';\n";
 	$config .= "\$username = '".$dbuser."';\n";
 	$config .= "\$password = '".$dbpassword."';\n";
