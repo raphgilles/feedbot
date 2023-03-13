@@ -317,53 +317,55 @@ foreach($result as $row){
 			</div>
 
 <!-- Recevoir sur Telegram -->
-			<p style="margin:-2px; margin-top: 6px;">
-<?php if ($telegram_id == "") { ?>
-				<form action="<?=WEBSITE_URL;?>/?p=settings" method="POST" class="switch">
-					<input type="hidden" name="telegram" value="notconnected">
-					<button type="submit" class="switch">
-						<span class="fa-stack fa-lg"><i class="fa fa-toggle-off fa-2x" aria-hidden="true" style="color:var(--feedbot-text);"></i></span>
-					</button>
-				</form>
-<?php } elseif ($telegram == '1') { ?>
-				<form class="switch telegram_off_<?=$sub_id;?>">
-					<input type="hidden" name="action" value="telegram">
-					<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
-					<input type="hidden" name="telegram" value="0">
-					<button onclick="telegram_off(<?=$sub_id;?>);" class="switch" title="<?=STOP_TELEGRAM;?>">
-						<span class="fa-stack fa-lg"><i class="fa fa-toggle-on fa-2x" aria-hidden="true"></i></span>
-					</button>
-				</form>
+<?php if ($telegram_bot !== "") { ?>
+				<p style="margin:-2px; margin-top: 6px;">
+	<?php if ($telegram_id == "") { ?>
+					<form action="<?=WEBSITE_URL;?>/?p=settings" method="POST" class="switch">
+						<input type="hidden" name="telegram" value="notconnected">
+						<button type="submit" class="switch">
+							<span class="fa-stack fa-lg"><i class="fa fa-toggle-off fa-2x" aria-hidden="true" style="color:var(--feedbot-text);"></i></span>
+						</button>
+					</form>
+	<?php } elseif ($telegram == '1') { ?>
+					<form class="switch telegram_off_<?=$sub_id;?>">
+						<input type="hidden" name="action" value="telegram">
+						<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
+						<input type="hidden" name="telegram" value="0">
+						<button onclick="telegram_off(<?=$sub_id;?>);" class="switch" title="<?=STOP_TELEGRAM;?>">
+							<span class="fa-stack fa-lg"><i class="fa fa-toggle-on fa-2x" aria-hidden="true"></i></span>
+						</button>
+					</form>
 
-				<form class="switch telegram_on_<?=$sub_id;?>" style="display: none;">
-					<input type="hidden" name="action" value="telegram">
-					<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
-					<input type="hidden" name="telegram" value="1">
-					<button onclick="telegram_on(<?=$sub_id;?>);" class="switch" title="<?=TELEGRAM;?>">
-						<span class="fa-stack fa-lg"><i class="fa fa-toggle-off fa-2x" aria-hidden="true" style="color:var(--feedbot-text);"></i></span>
-					</button>
-				</form>
-<?php } else { ?>
-				<form class="switch telegram_off_<?=$sub_id;?>" style="display: none;">
-					<input type="hidden" name="action" value="telegram">
-					<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
-					<input type="hidden" name="telegram" value="0">
-					<button onclick="telegram_off(<?=$sub_id;?>);" class="switch" title="<?=STOP_TELEGRAM;?>">
-						<span class="fa-stack fa-lg"><i class="fa fa-toggle-on fa-2x" aria-hidden="true"></i></span>
-					</button>
-				</form>
+					<form class="switch telegram_on_<?=$sub_id;?>" style="display: none;">
+						<input type="hidden" name="action" value="telegram">
+						<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
+						<input type="hidden" name="telegram" value="1">
+						<button onclick="telegram_on(<?=$sub_id;?>);" class="switch" title="<?=TELEGRAM;?>">
+							<span class="fa-stack fa-lg"><i class="fa fa-toggle-off fa-2x" aria-hidden="true" style="color:var(--feedbot-text);"></i></span>
+						</button>
+					</form>
+	<?php } else { ?>
+					<form class="switch telegram_off_<?=$sub_id;?>" style="display: none;">
+						<input type="hidden" name="action" value="telegram">
+						<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
+						<input type="hidden" name="telegram" value="0">
+						<button onclick="telegram_off(<?=$sub_id;?>);" class="switch" title="<?=STOP_TELEGRAM;?>">
+							<span class="fa-stack fa-lg"><i class="fa fa-toggle-on fa-2x" aria-hidden="true"></i></span>
+						</button>
+					</form>
 
-				<form class="switch telegram_on_<?=$sub_id;?>">
-					<input type="hidden" name="action" value="telegram">
-					<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
-					<input type="hidden" name="telegram" value="1">
-					<button onclick="telegram_on(<?=$sub_id;?>);" class="switch" title="<?=TELEGRAM;?>">
-						<span class="fa-stack fa-lg"><i class="fa fa-toggle-off fa-2x" aria-hidden="true" style="color:var(--feedbot-text);"></i></span>
-					</button>
-				</form>
+					<form class="switch telegram_on_<?=$sub_id;?>">
+						<input type="hidden" name="action" value="telegram">
+						<input type="hidden" name="sub_id" value="<?=$sub_id;?>">
+						<input type="hidden" name="telegram" value="1">
+						<button onclick="telegram_on(<?=$sub_id;?>);" class="switch" title="<?=TELEGRAM;?>">
+							<span class="fa-stack fa-lg"><i class="fa fa-toggle-off fa-2x" aria-hidden="true" style="color:var(--feedbot-text);"></i></span>
+						</button>
+					</form>
+	<?php } ?>
+					<span style="vertical-align: middle; padding-top: 2px; margin-left: 10px;"><?=TELEGRAM;?></span>
+				</p>
 <?php } ?>
-				<span style="vertical-align: middle; padding-top: 2px; margin-left: 10px;"><?=TELEGRAM;?></span>
-			</p>
 
 <!-- Supprimer le feed -->
 			<p style="margin-top: 10px;">

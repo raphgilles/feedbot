@@ -57,7 +57,6 @@ $banner = WEBSITE_URL."/assets/defaut_banner.png";
 
             <div class="post-mastodon" style="margin-bottom:5px;">
 
-            <p style="margin-top: 20px;">
                 <form action="includes/action.php" method="post" class="switch">
                     <label for="mail"><strong>Votre adresse mail</strong></label><br />
                     <input type="mail" id="mail" name="mail" style="margin-bottom: 20px; max-width: 300px;" value="<?=$mail;?>"><br />
@@ -74,11 +73,12 @@ $banner = WEBSITE_URL."/assets/defaut_banner.png";
 
                     <button type="submit"><span style="vertical-align: middle;">Modifier</span></button>
                 </form>
-            </p>
 
-            <p style="margin-top:50px; margin-bottom:8px;"><strong>Connecter votre compte Telegram</strong></p>
-            <script async src="https://telegram.org/js/telegram-widget.js?21" data-telegram-login="fedi_bot" data-size="large" data-userpic="false" data-auth-url="https://feedbot.net/includes/telegram.php" data-request-access="write"></script>
-            <p style="font-style: italic; margin-top:8px; font-size: 14px;">Vous pourrez ensuite configurer la veille sur Telegram en temps réel dans la gestion de <a href="<?=YOUR_FEEDS_PAGE;?>" title="Vos flux RSS">vos flux RSS</a>.</p>
+            <?php if ($telegram_bot !== ""){ ?>
+                <p style="margin-top:42px; margin-bottom:8px;"><strong>Connecter votre compte Telegram</strong></p>
+                <?=$telegram_bot;?>
+                <p style="font-style: italic; margin-top:8px; font-size: 14px;">Vous pourrez ensuite configurer la veille sur Telegram en temps réel dans la gestion de <a href="<?=YOUR_FEEDS_PAGE;?>" title="Vos flux RSS">vos flux RSS</a>.</p>
+            <?php } ?>
 
             </div>
 
