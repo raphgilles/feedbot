@@ -213,4 +213,23 @@ define('ENJOY_TIMELINE', 'Do you enjoy this timeline?');
 define('MUST_BE_CONNECTED', 'You must be logged in to be able to browse more on '.WEBSITE_NAME.' and take full advantage of its features.');
 define('IM_LOGGING', 'I’m logging in');
 
+
+// INSTALL
+define('I_TITLE', "Feedbot Installation");
+define('I_H3_TITLE', "Installation");
+define('I_ADMIN_RIGHTS', "Please give access rights (777) to the main folder to continue the installation");
+define('I_DB_ACCESS_DEN', "Connection to the database impossible, check your password or your host.");
+define('I_CREATE_DB_FAILED', "Database creation failed, please create it manually.");
+define('I_WEBSITE_NAME', "Website Name (eg: Feedbot)");
+define("I_DB_HOST", "Database host (eg: localhost)");
+define("I_DB_USER", "Database user (eg: root)");
+define("I_DB_NAME", "Database name (eg: feedbot)");
+define("I_DB_PWD", "Database password");
+define("I_SAVE", "Save");
+define("I_WURL", "The url of your website will be the current URL :");
+define("I_DB_OK", "Database connection successful.");
+define("I_IMPORT_DATA", "Import datas");
+define("I_FINISH", "The database has been successfully created. Installation is complete!");
+define("I_WELCOME", "Welcome!");
+
 ?>

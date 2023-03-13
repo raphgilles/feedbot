@@ -209,4 +209,23 @@ define('ENJOY_TIMELINE', 'Vous appréciez cette timeline ?');
 define('MUST_BE_CONNECTED', 'Vous devez être connecté pour pouvoir naviguer d’avantage sur Feedbot et profiter pleinement de ses fonctionnalités.');
 define('IM_LOGGING', 'Je me connecte');
 
+
+// INSTALL
+define('I_TITLE', "Feedbot Installation");
+define('I_H3_TITLE', "Installation");
+define('I_ADMIN_RIGHTS', "Veuillez donner les droits d'accès (777) au dossier principal pour continuer l'installation");
+define('I_DB_ACCESS_DEN', "Connexion à la base de donnée impossible, vérifiez votre mot de passe ou votre host.");
+define('I_CREATE_DB_FAILED', "Création de la base de donnée a échouée, veuillez la créer manuellement.");
+define('I_WEBSITE_NAME', "Nom du site (ex: Feedbot)");
+define("I_DB_HOST", "Hôte de la base de donnée (ex: localhost)");
+define("I_DB_USER", "Utilisateur de la base de donnée (ex: root)");
+define("I_DB_NAME", "Nom de la base de donnée (ex: feedbot)");
+define("I_DB_PWD", "Mot de passe de la base de donnée");
+define("I_SAVE", "Enregistrer");
+define("I_WURL", "L'URL de votre site est acutellement :");
+define("I_DB_OK", "Connexion à la base de donnée réussie.");
+define("I_IMPORT_DATA", "Importer les données");
+define("I_FINISH", "La base de donnée a bien été créée. L'instalation est complète !<br>Si la connexion avec Mastodon échoue, veuillez donner les droits 777 au dossier (includes<i>/mastophp</i>)");
+define("I_WELCOME", "Bienvenue !");
+
 ?>
