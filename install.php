@@ -71,7 +71,8 @@ if($page == 2){
 	$config .= "\$conn = new mysqli(\$servername, \$username, \$password, \$dbname);\n\n";
 	$config .= "//Users security\n";
 	$config .= "\$salt = '".$salt."';\n";
-	$config .= "\$pepper = '".$pepper."';\n";
+	$config .= "\$pepper = '".$pepper."';\n\n";
+	$config .= "\$telegram_bot = '';\n";
 	$config .= "?>";
 
 	file_put_contents(__DIR__.'/config.php', $config);
