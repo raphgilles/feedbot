@@ -229,7 +229,7 @@ define("I_SAVE", "Save");
 define("I_WURL", "The url of your website will be the current URL :");
 define("I_DB_OK", "Database connection successful.");
 define("I_IMPORT_DATA", "Import datas");
-define("I_FINISH", "The database has been successfully created. Installation is complete!");
+define("I_FINISH", "The database has been successfully created. Installation is complete!<br><br>Automatic redirect...");
 define("I_WELCOME", "Welcome!");
 
 ?>

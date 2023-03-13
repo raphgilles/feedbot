@@ -225,7 +225,7 @@ define("I_SAVE", "Enregistrer");
 define("I_WURL", "L'URL de votre site est acutellement :");
 define("I_DB_OK", "Connexion à la base de donnée réussie.");
 define("I_IMPORT_DATA", "Importer les données");
-define("I_FINISH", "La base de donnée a bien été créée. L'instalation est complète !<br>Si la connexion avec Mastodon échoue, veuillez donner les droits 777 au dossier (includes<i>/mastophp</i>)");
+define("I_FINISH", "La base de donnée a bien été créée. L'instalation est complète !<br><br>Redirection automatique...");
 define("I_WELCOME", "Bienvenue !");
 
 ?>
