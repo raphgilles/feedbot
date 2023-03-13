@@ -12,6 +12,10 @@ $sql = "INSERT INTO users (username) values ('$akainstance')";
 	mysqli_query($conn, $sql);
 	$id_user_query =  mysqli_fetch_array(mysqli_query($conn, "SELECT id FROM users ORDER BY id DESC LIMIT 1"));
 	$id_user = $id_user_query['id'];
+	if ($id_user == 1) {
+		$sql = "UPDATE users SET admin = ('1') WHERE id = '1'";
+		mysqli_query($conn, $sql);
+	}
 }
 
 // Si l'utilisateur existe, on récupère son id
