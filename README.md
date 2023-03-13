@@ -1,6 +1,6 @@
 # feedbot
 
-**Recommendations :**<br />
+**Recommandations :**<br />
 Les taches crons s'excecutant en PHP, je recommande d'installer Feedbot sur un VPS disposant de deux coeurs afin d'éviter des ralentissements lors de la navigation.<br />
 
 **Dépendances / Dependencies :**<br />
