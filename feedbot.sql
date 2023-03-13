@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 12 mars 2023 à 06:56
+-- Généré le : lun. 13 mars 2023 à 08:39
 -- Version du serveur : 10.5.18-MariaDB-0+deb11u1
 -- Version de PHP : 7.4.33
 
@@ -137,8 +137,8 @@ CREATE TABLE `statuses` (
 --
 
 CREATE TABLE `tasks` (
-  `feeds_last_id` int(11) NOT NULL DEFAULT 0,
-  `articles_last_id` int(11) NOT NULL DEFAULT 0,
+  `feeds_last_id` int(11) NOT NULL,
+  `articles_last_id` int(11) NOT NULL,
   `404_last_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -153,7 +153,8 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `mail` text DEFAULT NULL,
   `daily_mail` int(11) DEFAULT NULL,
-  `telegram` int(11) DEFAULT NULL
+  `telegram` int(11) DEFAULT NULL,
+  `admin` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
