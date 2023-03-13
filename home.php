@@ -58,9 +58,8 @@ include('./template-parts/autopromo.php');
 			});
 
 			function loadMore(last_id){
-				var website = window.location.origin;
 				$.ajax({
-					url: website + '/includes/infinite-home.php?last_id=' + last_id,
+					url: '<?=WEBSITE_URL;?>/includes/infinite-home.php?last_id=' + last_id,
 					type: "GET",
 					beforeSend: function(){
 						$('.ajax-load').show();
