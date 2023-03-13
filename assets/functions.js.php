@@ -1,6 +1,3 @@
-<?php
-	include_once('../config.php');
-?>
 <script type="text/javascript">
 var website = '<?=WEBSITE_URL;?>';
 
@@ -1353,8 +1350,7 @@ function hide_publish(back_url) {
 }
 
 function story(media_id){
-	var new_url = "/story/" + media_id;
-	var url = window.location.href;
+	var new_url = website + "/story.php?media=" + media_id;
 	$.ajax({
 		url: website + '/includes/stories.php?media=' + media_id,
 		type: "GET",
@@ -1374,8 +1370,7 @@ function story(media_id){
 }
 
 function podcast(id){
-	var new_url = "/podcast/" + id;
-	var url = window.location.href;
+	var new_url = website + "/podcast?id=" + id;
 	$.ajax({
 		url: website + '/includes/podcast.php?id=' + id,
 		type: "GET",
