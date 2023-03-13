@@ -47,6 +47,8 @@ $mastoPHP = new MastoPHP\MastoPHP(''.$akainstance.'');
 $app = $mastoPHP->registerApp(WEBSITE_NAME, WEBSITE_URL);
 
 if(!empty($_GET['i'])){
+	echo "<strong>— Veuillez vous assurer d'avoir donné les droit d'accès en écriture au dossier \"/includes/mastophp\" puis rafraîchissez cette page.<br>— Please make sure you have given write access to the \"/includes/mastophp\" folder then refresh this page.</strong>";
+
 	if($app === false) {
 		throw new Exception('Problem during register app');
 	}
@@ -116,7 +118,7 @@ if(!empty($_GET['code'])){
 		$key1 = sha1($akainstance);
 		$key2 = sha1($aka);
 		$key3 = sha1($theDomain);
-		$key4 = sha1('1345b0cee05a445a7bdf71e5f5e9f399-b2c02c296db7e1294b1e69feb686fa00'.$key1.$key2.$key3.'41c1100b700302723ada9abb3c1def39-dca0b39ac48f40253fb8a21e9fac0c47');
+		$key4 = sha1($salt.$key1.$key2.$key3.$pepper);
 
 		$jfil = __DIR__.DIRECTORY_SEPARATOR.'/mastophp/MastoPHP_'.$theDomain.'_'.$key4.'.json';
 		unlink($jfil);
