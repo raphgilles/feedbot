@@ -116,7 +116,7 @@ $(window).scroll(function() {
 
 function loadMore(last_id){
   $.ajax({
-      url: '<?=WEBSITE_URL;?>/includes/infinite-home.php?last_id=' + last_id + '&feed=<?=$feed;?>',
+      url: '<?=WEBSITE_URL;?>/includes/infinite-single-feed.php?last_id=' + last_id + '&feed=<?=$feed;?>',
       type: "GET",
       beforeSend: function(){
           $('.ajax-load').show();
