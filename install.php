@@ -1,8 +1,22 @@
+<?php
+	define('WEBSITE_NAME', 'Feedbot');
+	include('./assets/lang/lang.php');
+	include('./includes/functions.php');
+	$page = cq($_GET['page']);
+
+	if($page == ""){
+		$npage = "1";
+	}
+	else{
+		$npage = $page;
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Feedbot Installation</title>
+	<title><?=I_TITLE;?></title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,user-scalable=no, shrink-to-fit=yes" />
 	<link rel="stylesheet" href="./assets/colors-dark.css">
 	<link rel="stylesheet" href="./assets/style.css">
@@ -11,13 +25,18 @@
 <body>
 
 <div style="width:90%; max-width:1200px; margin:auto; margin-top:40px; padding:40px; border-radius:12px; background-color: var(--feedbot-content-background);">
+<?php
+if($page != "4"){
+?>
+
 	<img src="./assets/icons/logomail.png" style="display:block; width:200px; filter:invert(1); margin:auto;" />
-	<h3 style="text-align:center; color:var(--feedbot-title); margin-bottom: 60px;">Installation</h3>
+	<h3 style="text-align:center; color:var(--feedbot-title); margin-bottom: 60px;"><?=I_H3_TITLE;?> | <?=$npage;?>/3</h3>
 
 <?php
-include('./includes/functions.php');
-
-$page = cq($_GET['page']);
+}
+else{
+	include('./youpi.php');
+}
 
 if($page == ""){
 	$salt = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
@@ -29,7 +48,7 @@ if($page == 2){
 	$perm = substr(sprintf('%o', fileperms(''.$dir.'')), -4);
 
 	if($perm != "0777"){
-		echo "<div align=\"center\"><h3 style=\"color:red;\">Veuillez donner les droits d'accès (777) au dossier principal (<i>".__DIR__."</i>) pour continuer l'installation !</h3></div></div></body></html>";
+		echo "<div align=\"center\"><h3 style=\"color: white;\">".I_ADMIN_RIGHTS." (<i>".__DIR__."</i>)</h3></div></div></body></html>";
 		exit();
 	}
 
@@ -47,14 +66,14 @@ if($page == 2){
 
 	if($cnx->connect_error){
 		// S'il y a une erreur à cette étape, c'est que le HOST ou le PASSWORD sont erronés
-		echo "<div align=\"center\"><h3 style=\"color:red;\">Connexion à la base de donnée impossible, vérifiez votre mot de passe ou votre host.</h3></div></div></body></html>";
+		echo "<div align=\"center\"><h3 style=\"color:red;\">".I_DB_ACCESS_DEN."</h3></div></div></body></html>";
 		exit();
 	}
 
 	// Si la table n'a pas été créer par l'admin, alors on la créer
 	if(!$cnx->query("CREATE DATABASE IF NOT EXISTS ".$dbname."")){
 		// Si la base ne veut pas se créer :
-		echo "<div align=\"center\"><h3 style=\"color:red;\">Création de la base de donnée \"<i>".$dbname."</i>\" a échouée, veuillez la créer manuellement.</h3></div></div></body></html>";
+		echo "<div align=\"center\"><h3 style=\"color:white;\">".I_CREATE_DB_FAILED." (<i>".$dbname."</i>)</h3></div></div></body></html>";
 		exit();
 	}
 	mysqli_close($cnx);
@@ -71,8 +90,7 @@ if($page == 2){
 	$config .= "\$conn = new mysqli(\$servername, \$username, \$password, \$dbname);\n\n";
 	$config .= "//Users security\n";
 	$config .= "\$salt = '".$salt."';\n";
-	$config .= "\$pepper = '".$pepper."';\n\n";
-	$config .= "\$telegram_bot = '';\n";
+	$config .= "\$pepper = '".$pepper."';\n";
 	$config .= "?>";
 
 	file_put_contents(__DIR__.'/config.php', $config);
@@ -110,18 +128,18 @@ if($theme == ""){
 
 <?php if($page == ""){ ?>
 	<form action="install.php?page=2" method="POST" style="max-width:400px; text-align:left; align-items:initial; margin:auto;">
-		<input type="text" name="website_name" placeholder="Website Name" required>
-		<input type="text" name="dbhost" placeholder="Database host" required>
-		<input type="text" name="dbuser" placeholder="Database user" required>
-		<input type="text" name="dbname" placeholder="Database name" required>
-		<input type="password" name="dbpassword" placeholder="Database password" required>
+		<input type="text" name="website_name" placeholder="<?=I_WEBSITE_NAME;?>" required>
+		<input type="text" name="dbhost" placeholder="<?=I_DB_HOST;?>" required>
+		<input type="text" name="dbuser" placeholder="<?=I_DB_USER;?>" required>
+		<input type="text" name="dbname" placeholder="<?=I_DB_NAME;?>" required>
+		<input type="password" name="dbpassword" placeholder="<?=I_DB_PWD;?>" required>
 		<input type="hidden" name="salt" value="<?=$salt;?>">
 		<input type="hidden" name="pepper" value="<?=$pepper;?>">
 		<input type="hidden" name="website_url" value="<?=$website_url;?>">
-		<button type="submit">Save</button>
+		<button type="submit"><?=I_SAVE;?></button>
 	</form>
 
-	<p style="margin-top:20px; font-style: italic; text-align:center;">The url of your website will be the current URL : <?=$website_url;?></p>
+	<p style="margin-top:20px; font-style: italic; text-align:center;"><?=I_WURL;?> <?=$website_url;?></p>
 
 <?php
 }
@@ -131,10 +149,10 @@ elseif($page == 2){
 	}
 	else{
 ?>
-	<p style="text-align:center;">Database connection successful.</p>
+	<p style="text-align:center;"><?=I_DB_OK;?></p>
 	<form action="install.php?page=3" method="POST" style="margin:auto;">
 		<input type="hidden" name="dbfile" value="feedbot.sql">
-		<button type="submit">Importer les données</button>
+		<button type="submit"><?=I_IMPORT_DATA;?></button>
 	</form>
 <?php
 	}
@@ -143,18 +161,19 @@ elseif($page == 3){
 	$sql = file_get_contents($dbfile);
 	$conn->multi_query($sql);
 
-	chmod('./includes/mastophp/', 0775);
-	unlink('install.php');
-	unlink('feedbot.sql');
-
-	echo "<p style=\"text-align:center;\">The database has been successfully created. Installation is complete!</p>";
+	echo "<p style=\"text-align:center;\">".I_FINISH."</p>";
 ?>
 	<script type="text/javascript">
 		setTimeout(function(){
-			window.location.href = "<?=WEBSITE_URL;?>";
+			window.location.href = "install.php?page=4";
 		}, 4000);
 	</script>
 <?php
+}
+elseif($page == 4){
+	unlink('install.php');
+	unlink('feedbot.sql');
+	unlink('youpi.php');
 }
 ?>
 </div>
