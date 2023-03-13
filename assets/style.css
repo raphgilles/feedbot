@@ -512,7 +512,7 @@ body {
 
 .title {
   height: 25px;
-  color: var(--feedbot-sidebar-background);
+  color: var(--feedbot-title);
   font-size: 25px;
   font-weight: 500;
   margin-bottom: 25px;
