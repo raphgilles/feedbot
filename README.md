@@ -9,6 +9,7 @@ php{version}-gd<br />
 **Ajouter le bouton Telegram dans les paramètres utilisateur :**<br />
 https://core.telegram.org/widgets/login<br />
 Choisir "Redirect to URL", à faire pointer vers : https://votredomaine.tld/includes/telegram.php<br />
+Ajouter le script dans la variable $telegram_bot dans le fichier config.php<br />
 
 **Sources :**<br />
 MastoPHP : https://github.com/StefOfficiel/MastoPHP<br />
