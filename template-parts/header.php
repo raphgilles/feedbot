@@ -2,10 +2,12 @@
 include('./config.php');
 include('./includes/functions.php');
 
-$sql = "SELECT * FROM users WHERE id = '1'";
-$result = mysqli_query($conn, $sql);
-foreach($result as $row){
-$admin = $row['username'];
+if(!isset($admin)){
+  $sql = "SELECT * FROM users WHERE admin = '1'";
+  $result = mysqli_query($conn, $sql);
+  foreach($result as $row){
+    $admin = $row['username'];
+  }
 }
 
 $sidebar = $_COOKIE['open'];
