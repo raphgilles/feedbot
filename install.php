@@ -94,7 +94,21 @@ else{
 }
 
 if($page == ""){
-	// Gestion de la page 1
+	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+		$website_url = "https://";
+	}
+	else{
+		$website_url = "http://";   
+	}
+
+	$subfolder = $_SERVER['PHP_SELF'];
+	$subfolder = str_replace("/install.php", "", $subfolder);
+
+	if($subfolder == "/"){
+		$subfolder = "";
+	}
+
+	$website_url .= $_SERVER['HTTP_HOST'].$subfolder;
 }
 
 if($page == 2){
