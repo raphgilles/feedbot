@@ -29,6 +29,8 @@ define('WATCH_LATER', 'Regarder plus tard');
 define('UNWATCH_LATER', 'Ne plus regarder plus tard');
 define('OPEN', 'Ouvrir');
 define('ABOUT', 'À propos');
+define("NEXT", "Suivant");
+define("DB_FAILED", "La connexion à la base de données a échoué :");
 
 
 // Sidebar
@@ -213,7 +215,7 @@ define('IM_LOGGING', 'Je me connecte');
 // INSTALL
 define('I_TITLE', "Feedbot Installation");
 define('I_H3_TITLE', "Installation");
-define('I_ADMIN_RIGHTS', "Veuillez donner les droits d'accès (777) au dossier principal pour continuer l'installation");
+define('I_ADMIN_RIGHTS', "Veuillez donner les droits d'accès (777) au dossier principal pour continuer l’installation");
 define('I_DB_ACCESS_DEN', "Connexion à la base de donnée impossible, vérifiez votre mot de passe ou votre host.");
 define('I_CREATE_DB_FAILED', "Création de la base de donnée a échouée, veuillez la créer manuellement.");
 define('I_WEBSITE_NAME', "Nom du site (ex: Feedbot)");
@@ -222,10 +224,12 @@ define("I_DB_USER", "Utilisateur de la base de donnée (ex: root)");
 define("I_DB_NAME", "Nom de la base de donnée (ex: feedbot)");
 define("I_DB_PWD", "Mot de passe de la base de donnée");
 define("I_SAVE", "Enregistrer");
-define("I_WURL", "L'URL de votre site est acutellement :");
+define("I_WURL", "L’URL de votre site est acutellement :");
 define("I_DB_OK", "Connexion à la base de donnée réussie.");
+define("I_DB_OK_2", "Création des éléments de la base de donnée…");
 define("I_IMPORT_DATA", "Importer les données");
-define("I_FINISH", "La base de donnée a bien été créée. L'instalation est complète !<br><br>Redirection automatique...");
+define("I_FINISH", "La base de donnée a bien été créée. L’instalation est complète !");
+define("I_AUTO_REDIR", "Redirection automatique…");
 define("I_WELCOME", "Bienvenue !");
 
 ?>

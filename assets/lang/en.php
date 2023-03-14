@@ -29,6 +29,8 @@ define('WATCH_LATER', 'Watch later');
 define('UNWATCH_LATER', 'Don\'t watch later');
 define('OPEN', 'Open');
 define('ABOUT', 'About');
+define("NEXT", "Next");
+define("DB_FAILED", "Database connection failed:");
 
 
 // Sidebar
@@ -228,8 +230,10 @@ define("I_DB_PWD", "Database password");
 define("I_SAVE", "Save");
 define("I_WURL", "The url of your website will be the current URL :");
 define("I_DB_OK", "Database connection successful.");
+define("I_DB_OK_2", "Creating database items…");
 define("I_IMPORT_DATA", "Import datas");
-define("I_FINISH", "The database has been successfully created. Installation is complete!<br><br>Automatic redirect...");
+define("I_FINISH", "The database has been successfully created. Installation is complete!");
+define("I_AUTO_REDIR", "Automatic redirect…");
 define("I_WELCOME", "Welcome!");
 
 ?>

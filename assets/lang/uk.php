@@ -29,6 +29,8 @@ define('WATCH_LATER', 'Подивитися потім');
 define('UNWATCH_LATER', 'Не дивитись потім');
 define('OPEN', 'Відкрити');
 define('ABOUT', 'Про');
+define("NEXT", "Слідую");
+define("DB_FAILED", "Помилка підключення до бази даних:");
 
 
 // Sidebar
@@ -229,7 +231,10 @@ define("I_DB_PWD", "Database password");
 define("I_SAVE", "зберегти");
 define("I_WURL", "URL-адреса вашого веб-сайту буде поточною URL-адресою :");
 define("I_DB_OK", "Підключення до бази даних успішно.");
+define("I_DB_OK_2", "Створення елементів бази даних…");
 define("I_IMPORT_DATA", "Імпорт даних");
-define("I_FINISH", "Базу даних успішно створено. Встановлення завершено!<br><br>Автоматичне перенаправлення...");
+define("I_FINISH", "Базу даних успішно створено. Встановлення завершено!");
+define("I_AUTO_REDIR", "Автоматичне перенаправлення…");
 define("I_WELCOME", "Ласкаво просимо!");
+
 ?>
