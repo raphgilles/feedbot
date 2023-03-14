@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/jquery-3.6.3.min.js"></script>
 </head>
-<body style="position: relative; width: 100vw; height: 100vh; overflow: hidden; animation:fadeout .5s ease; animation-delay: 4s; animation-iteration-count: 1;">
+<body style="position: relative; width: 100vw; height: 100vh; overflow: hidden;">
 
 <div class="textcontainer" style="width: 100%; height: 100%; position: absolute;">
 	<span class="particletext confetti" style="width: 100vw; height: 100vh; position: absolute; top: -60px;"></span>
@@ -63,14 +63,6 @@
 			transform: scale(1);
 	}
 }
-@keyframes fadeout {
-	0% {
-			opacity:1;
-	}
-	100% {
-			opacity:0;
-	}
-}
 
 @-webkit-keyframes confetti {
 	0% {
@@ -114,7 +106,7 @@ body .particletext.confetti > .particle {
 	opacity: 0;
 	position: absolute;
 	-webkit-animation: confetti 3s ease-in infinite;
-					animation: confetti 3s ease-in infinite;
+			animation: confetti 3s ease-in infinite;
 }
 body .particletext.confetti > .particle.c1 {
 	background-color: #8384ff;
@@ -147,6 +139,16 @@ confetti();
 </script>
 <script type="text/javascript">
 	setTimeout(function(){
-		window.location.href = "<?=WEBSITE_URL;?>";
+		installexit();
 	}, 4000);
+
+	function installexit(){
+		$('body').fadeOut(400, 'linear', installredir());
+	}
+
+	function installredir(){
+		setTimeout(function(){
+			window.location.href = "<?=WEBSITE_URL;?>";
+		}, 400);
+	}
 </script>
