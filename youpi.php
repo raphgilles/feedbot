@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/jquery-3.6.3.min.js"></script>
 </head>
-<body style="position: relative; width: 100vw; height: 100vh; overflow: hidden;">
+<body style="position: relative; width: 100vw; height: 100vh; overflow: hidden; animation:fadeout .5s ease; animation-delay: 4s; animation-iteration-count: 1;">
 
 <div class="textcontainer" style="width: 100%; height: 100%; position: absolute;">
 	<span class="particletext confetti" style="width: 100vw; height: 100vh; position: absolute; top: -60px;"></span>
@@ -23,8 +23,8 @@
 </div>
 
 <div align="center">
-	<div style="position:absolute; top:50%; transform: translateY(-50%); margin: 0; width: 100%; opacity: 0.5;">
-		<img class="scale-up-center" src="./assets/icons/logomail.png" style="display:block; max-width:50%; filter:invert(1) drop-shadow(0 0 1px white); margin:auto; width: 100%;">
+	<div style="position:absolute; top:50%; transform: translateY(-50%); margin: 0; width: 100%;">
+		<img class="logo scale-up-center" src="./assets/icons/logomail.png">
 <!--
 		<h1 style="font-size: 100%;filter: drop-shadow(0 0 1px white);">🥳 <?=I_WELCOME;?></h1>
 -->
@@ -32,6 +32,13 @@
 </div>
 
 <style type="text/css">
+.logo {
+	display:block;
+	max-width:50%;
+	filter:invert(1) drop-shadow(0 0 1px white);
+	margin:auto;
+	width: 100%;
+}
 .scale-up-center {
 	-webkit-animation: scale-up-center 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 			animation: scale-up-center 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -54,6 +61,14 @@
 	100% {
 		-webkit-transform: scale(1);
 			transform: scale(1);
+	}
+}
+@keyframes fadeout {
+	0% {
+			opacity:1;
+	}
+	100% {
+			opacity:0;
 	}
 }
 
@@ -106,6 +121,11 @@ body .particletext.confetti > .particle.c1 {
 }
 body .particletext.confetti > .particle.c2 {
 	background-color: #563acc;
+}
+@media screen and (min-width:1080px){
+	.logo {
+		max-width: 30%;
+	}
 }
 </style>
 <script src="./assets/jquery-3.6.3.min.js"></script>
