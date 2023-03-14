@@ -14,6 +14,10 @@ https://core.telegram.org/widgets/login<br />
 Choisir "Redirect to URL", à faire pointer vers : https://votredomaine.tld/includes/telegram.php<br />
 Ajouter le script dans la variable $telegram_bot dans le fichier config.php<br />
 
+**Logo :**<br />
+Logo créé par Maous, sous licence CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/)<br />
+https://maous.fr/<br />
+
 **Sources :**<br />
 MastoPHP : https://github.com/StefOfficiel/MastoPHP<br />
 Sidebar : https://www.codinglabweb.com/2021/04/responsive-side-navigation-bar-in-html.html<br />
