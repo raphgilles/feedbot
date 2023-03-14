@@ -21,15 +21,71 @@ if($page != "4"){
 	<meta charset="utf-8">
 	<title><?=I_TITLE;?></title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,user-scalable=no, shrink-to-fit=yes" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
 	<link rel="stylesheet" href="./assets/colors-dark.css">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/jquery-3.6.3.min.js"></script>
+	<style type="text/css">
+		/* Style de l'installateur */
+		html {
+			position: relative;
+			height: auto;
+			width: auto;
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			position: absolute;
+			width: 100vw;
+			height: 100vh;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			margin: 0;
+			padding: 0;
+			top: 0;
+		}
+
+		.first-box {
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			padding:40px;
+			border-radius:12px;
+			background-color: var(--feedbot-content-background);
+		}
+
+		.first-box img {
+			display: block;
+			width: 200px;
+			filter: invert(1);
+			margin: auto;
+		}
+
+		.first-box h3 {
+			text-align: center;
+			color: var(--feedbot-title);
+			margin-top: 15px;
+			margin-bottom: 35px; 
+		}
+
+		@media screen and (max-width: 1080px) {
+			.first-box {
+				margin: auto 1%;
+			}
+		}
+		@media screen and (min-width: 1081px) {
+			.first-box {
+				margin: auto 10%;
+			}
+		}
+	</style>
 </head>
 <body>
 
-<div style="width:90%; max-width:1200px; margin:auto; margin-top:40px; padding:40px; border-radius:12px; background-color: var(--feedbot-content-background);">
-	<img src="./assets/icons/logomail.png" style="display:block; width:200px; filter:invert(1); margin:auto;" />
-	<h3 style="text-align:center; color:var(--feedbot-title); margin-bottom: 60px;"><?=I_H3_TITLE;?> | <?=$npage;?>/3</h3>
+<div class="first-box">
+	<img src="./assets/icons/logomail.png">
+	<h3><?=I_H3_TITLE;?><br><?=$npage;?>/3</h3>
 
 <?php
 }
@@ -128,14 +184,14 @@ if($theme == ""){
 <?php if($page == ""){ ?>
 	<form action="install.php?page=2" method="POST" style="max-width:400px; text-align:left; align-items:initial; margin:auto;">
 		<input type="text" name="website_name" placeholder="<?=I_WEBSITE_NAME;?>" required>
+		<input type="text" name="dbname" placeholder="<?=I_DB_NAME;?>" required>
 		<input type="text" name="dbhost" placeholder="<?=I_DB_HOST;?>" required>
 		<input type="text" name="dbuser" placeholder="<?=I_DB_USER;?>" required>
-		<input type="text" name="dbname" placeholder="<?=I_DB_NAME;?>" required>
 		<input type="password" name="dbpassword" placeholder="<?=I_DB_PWD;?>" required>
 		<input type="hidden" name="salt" value="<?=$salt;?>">
 		<input type="hidden" name="pepper" value="<?=$pepper;?>">
 		<input type="hidden" name="website_url" value="<?=$website_url;?>">
-		<button type="submit"><?=I_SAVE;?></button>
+		<button type="submit"><?=NEXT;?> <i aria-hidden="true" class="fa fa-caret-right fa-fw"></i></button>
 	</form>
 
 	<p style="margin-top:20px; font-style: italic; text-align:center;"><?=I_WURL;?> <?=$website_url;?></p>
@@ -144,14 +200,22 @@ if($theme == ""){
 }
 elseif($page == 2){
 	if($conn->connect_error){
-		die("Database connection failed: " . $conn->connect_error);
+		die("".DB_FAILED."" . $conn->connect_error);
 	}
 	else{
 ?>
-	<p style="text-align:center;"><?=I_DB_OK;?></p>
+	<p style="text-align: center; font-size: large;"><?=I_DB_OK;?></p>
+	<p style="text-align: center;">
+		<i class="fa fa-caret-down fa-fw" aria-hidden="true"></i>
+		<br>
+		<i aria-hidden="true" class="fa fa-database fa-lg fa-fw"></i>
+		<?=I_DB_OK_2;?>
+		<br>
+		<br>
+	</p>
 	<form action="install.php?page=3" method="POST" style="margin:auto;">
 		<input type="hidden" name="dbfile" value="feedbot.sql">
-		<button type="submit"><?=I_IMPORT_DATA;?></button>
+		<button type="submit"><?=NEXT;?> <i aria-hidden="true" class="fa fa-caret-right fa-fw"></i></button>
 	</form>
 <?php
 	}
@@ -160,7 +224,7 @@ elseif($page == 3){
 	$sql = file_get_contents($dbfile);
 	$conn->multi_query($sql);
 
-	echo "<p style=\"text-align:center;\">".I_FINISH."</p>";
+	echo "<p style=\"text-align:center;\">".I_FINISH."<br><br><span style=\"font-size: large;\"><i class=\"fa fa-spinner fa-pulse fa-fw\"></i> ".I_AUTO_REDIR."</span></p>";
 ?>
 	<script type="text/javascript">
 		setTimeout(function(){
