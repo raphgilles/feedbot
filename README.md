@@ -1,4 +1,4 @@
-# feedbot
+# Feedbot
 
 **Installation :**<br />
 Le dossier dans lequel se trouve le fichier "install.php" doit avoir les droits configurés en "777".<br />
