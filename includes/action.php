@@ -333,17 +333,9 @@ if ($action == 'delete_bookmark') {
 session_start();
 $article_id = cq("".$_POST['article_id']."");
 $uid = $_SESSION['uid'];
-$redirect = $_SESSION['redirect'];
-$date = date();
-
-$sql = mysqli_fetch_array(mysqli_query($conn, "SELECT id FROM articles_published WHERE uid = '$uid' AND article_id = '$article_id'"));
-$exists = $sql['id'];
 
 $sql = "UPDATE articles_published SET bookmarked = '0' WHERE uid = '$uid' AND article_id = '$article_id'";
 	mysqli_query($conn, $sql);
-
-if ($article_id !== "") { $article_redirect = "#".$article_id; }
-header('location: '.$redirect.$article_redirect.'');
 
 }
 
