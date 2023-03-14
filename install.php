@@ -94,8 +94,7 @@ else{
 }
 
 if($page == ""){
-	$salt = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
-	$pepper = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
+	// Gestion de la page 1
 }
 
 if($page == 2){
@@ -107,14 +106,30 @@ if($page == 2){
 		exit();
 	}
 
+
+	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+		$website_url = "https://";
+	}
+	else{
+		$website_url = "http://";   
+	}
+
+	$subfolder = $_SERVER['PHP_SELF'];
+	$subfolder = str_replace("/install.php", "", $subfolder);
+
+	if($subfolder == "/"){
+		$subfolder = "";
+	}
+
+	$website_url .= $_SERVER['HTTP_HOST'].$subfolder;
+
 	$dbhost = cq($_POST['dbhost']);
 	$dbuser = cq($_POST['dbuser']);
 	$dbname = cq($_POST['dbname']);
 	$dbpassword = cq($_POST['dbpassword']);
-	$salt = cq($_POST['salt']);
-	$pepper = cq($_POST['pepper']);
-	$website_name = cq($_POST['website_name']);
-	$website_url = cq($_POST['website_url']);
+	$salt = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
+	$pepper = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
+	$website_name = "Feedbot";
 
 	// On vérifie la connexion à la base de donnée
 	$cnx = new mysqli(''.$dbhost.'', ''.$dbuser.'', ''.$dbpassword.'');
@@ -158,39 +173,20 @@ if($page == 3){
 	$dbfile = cq($_POST['dbfile']);
 }
 
-if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-	$website_url = "https://";
-}
-else{
-	$website_url = "http://";   
-}
-
-$subfolder = $_SERVER['PHP_SELF'];
-$subfolder = str_replace("/install.php", "", $subfolder);
-
-if($subfolder == "/"){
-	$subfolder = "";
-}
-
-$website_url .= $_SERVER['HTTP_HOST'].$subfolder;
-
 $theme = $_COOKIE['theme'];
 
 if($theme == ""){
 	$theme = "dark";
 }
+
 ?>
 
 <?php if($page == ""){ ?>
 	<form action="install.php?page=2" method="POST" style="max-width:400px; text-align:left; align-items:initial; margin:auto;">
-		<input type="text" name="website_name" placeholder="<?=I_WEBSITE_NAME;?>" required>
 		<input type="text" name="dbname" placeholder="<?=I_DB_NAME;?>" required>
 		<input type="text" name="dbhost" placeholder="<?=I_DB_HOST;?>" required>
 		<input type="text" name="dbuser" placeholder="<?=I_DB_USER;?>" required>
 		<input type="password" name="dbpassword" placeholder="<?=I_DB_PWD;?>" required>
-		<input type="hidden" name="salt" value="<?=$salt;?>">
-		<input type="hidden" name="pepper" value="<?=$pepper;?>">
-		<input type="hidden" name="website_url" value="<?=$website_url;?>">
 		<button type="submit"><?=NEXT;?> <i aria-hidden="true" class="fa fa-caret-right fa-fw"></i></button>
 	</form>
 
