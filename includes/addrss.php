@@ -3,6 +3,7 @@ session_start();
 
 include('../config.php');
 include('./functions.php');
+date_default_timezone_set('Europe/Paris');
 
 $aka = $_SESSION['akainstance'];
 $user = $_SESSION['uid'];
@@ -16,7 +17,9 @@ $feed = getRSS($feed);
 
 $extension = pathinfo($feed, PATHINFO_EXTENSION);
 $slash = substr($feed, strlen($feed)-1);
-if ($extension == "" && $slash !== "/") {
+$is_xml_end = substr($feed, strlen($feed)-3);
+$is_spip = substr($feed, strlen($feed)-14);
+if ($extension == "" && $slash !== "/" && $is_xml_end !== "xml" && $is_spip == "backend-simple") {
     $feed = str_replace($feed, $feed.'/', $feed);
 }
 
@@ -83,11 +86,14 @@ if ($feed_id !== NULL && $sub_id == "") {
 
 elseif ($feed_id === NULL) {
 
-	$media_thumbnail = getFavicon($media_url);
+	$media_thumbnail = $rss->channel->image->url;
 
-	if($media_thumbnail !== WEBSITE_URL."/assets/nopreview.png"){
-		$media_thumbnail = $media_url.$media_thumbnail;
-		$media_thumbnail = str_replace("".$media_url.$media_url."", "".$media_url."", $media_thumbnail);
+	if($media_thumbnail == "") {
+	    $media_thumbnail = getFavicon($media_url);
+	    if($media_thumbnail !== WEBSITE_URL."/assets/nopreview.png"){
+	        $media_thumbnail = $media_url.$media_thumbnail;
+	        $media_thumbnail = str_replace("".$media_url.$media_url."", "".$media_url."", $media_thumbnail);
+	    }
 	}
 
 	echo $media_thumbnail;
@@ -116,16 +122,17 @@ elseif ($feed_id === NULL) {
 				$description = str_replace( "&nbsp;", '<br /><br />', $description);
 				$description = html_entity_decode(strip_tags($description), ENT_SUBSTITUTE|ENT_HTML5, 'UTF-8');
 				$date = $item->pubDate;
+                if($date == ""){
+                    $dc = $item->children('http:purl.org/dc/elements/1.1/');
+                    $date = $dc->date;
+                }
+                if($date == "" OR $date === NULL){
+                    $date = date('Y-m-d\TH:i:sO', time());
+                }
 
 				$enclosure = $item->enclosure['url'];
 		        $is_audio = pathinfo($enclosure, PATHINFO_EXTENSION);
 		        if ($is_audio == "mp3" OR $is_audio == "aac" OR $is_audio == "wav") { $embed = $enclosure; }
-				
-				if($date == ""){
-					$dc = $item->children('http:purl.org/dc/elements/1.1/');
-					$date = $dc->date;
-				}
-
 				$thumbnail = WEBSITE_URL."/assets/nopreview.png";  
 
 				$enclosure = $item->enclosure['url'];
