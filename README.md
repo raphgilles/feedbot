@@ -3,8 +3,6 @@
 **Installation :**<br />
 Le dossier dans lequel se trouve le fichier "install.php" doit avoir les droits configurés en "777".<br />
 Le dossier "/includes/mastophp" doit avoir les droits configurés en "777".<br />
-L'administrateur sera le premier utilisateur à se connecter. Il est toutefois possible de le modifier en ajoutant dans le fichier config.php :<br />
-$admin = "@aka@instance.tld"<br />
 
 **Dépendances / Dependencies :**<br />
 php{version}-xml<br />
