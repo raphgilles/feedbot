@@ -152,7 +152,7 @@
 
  	 <li class="profile">
          <div class="profile-details">
-           <img src="https://mastory.social/wp-content/uploads/2023/01/missing.png" alt="profileImg" onclick="location.href='<?= WEBSITE_URL ?>/?p=signin';" style="cursor: pointer;">
+           <img src="<?=WEBSITE_URL;?>/assets/missing.png" alt="profileImg" onclick="location.href='<?= WEBSITE_URL ?>/?p=signin';" style="cursor: pointer;">
            <div class="name_job">
              <div class="name"><?= GUEST ?></div>
              <div class="job"></div>
