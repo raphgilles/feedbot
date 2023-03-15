@@ -2,12 +2,10 @@
 include('./config.php');
 include('./includes/functions.php');
 
-if(!isset($admin)){
-  $sql = "SELECT * FROM users WHERE admin = '1'";
-  $result = mysqli_query($conn, $sql);
-  foreach($result as $row){
-    $admin = $row['username'];
-  }
+$sql = "SELECT * FROM users WHERE admin = '1'";
+$result = mysqli_query($conn, $sql);
+foreach($result as $row){
+  $admin = $row['username'];
 }
 
 $sidebar = $_COOKIE['open'];
@@ -183,6 +181,7 @@ if ($feed !== "" && $article !== "") {
 <head>
 <title><?php if ($title !== NULL) { echo $title. " | "; } ?><?=WEBSITE_NAME;?></title>
 <meta property="og:platform" content="Feedbot" />
+<meta property="feedbot:url" content="<?=WEBSITE_URL;?>" />
 <meta property="feedbot:version" content="0.9" />
 <meta property="feedbot:admin" content="<?=$admin;?>" />
 
