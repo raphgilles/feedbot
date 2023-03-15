@@ -144,6 +144,7 @@ if($page == 2){
 	$salt = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
 	$pepper = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
 	$website_name = "Feedbot";
+	$admin = cq($_POST['admin']);
 
 	// On vérifie la connexion à la base de donnée
 	$cnx = new mysqli(''.$dbhost.'', ''.$dbuser.'', ''.$dbpassword.'');
@@ -174,7 +175,9 @@ if($page == 2){
 	$config .= "\$conn = new mysqli(\$servername, \$username, \$password, \$dbname);\n\n";
 	$config .= "//Users security\n";
 	$config .= "\$salt = '".$salt."';\n";
-	$config .= "\$pepper = '".$pepper."';\n";
+	$config .= "\$pepper = '".$pepper."';\n\n";
+	$config .= "//Administrator (must be a Mastodon aka. Example : @johnmastodon@mastoot.fr\n";
+	$config .= "\$admin = '".$admin."';\n";
 	$config .= "?>";
 
 	file_put_contents(__DIR__.'/config.php', $config);
@@ -201,6 +204,8 @@ if($theme == ""){
 		<input type="text" name="dbhost" placeholder="<?=I_DB_HOST;?>" required>
 		<input type="text" name="dbuser" placeholder="<?=I_DB_USER;?>" required>
 		<input type="password" name="dbpassword" placeholder="<?=I_DB_PWD;?>" required>
+		<label for="admin"><?=I_ADMIN;?></label>
+		<input type="text" name="admin" placeholder="<?=I_ADMIN_EXAMPLE;?>" required>
 		<button type="submit"><?=NEXT;?> <i aria-hidden="true" class="fa fa-caret-right fa-fw"></i></button>
 	</form>
 
