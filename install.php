@@ -93,7 +93,7 @@ else{
 	include('./youpi.php');
 }
 
-if($page == ""){
+if($page == "" || $page == 1){
 	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
 		$website_url = "https://";
 	}
@@ -120,7 +120,6 @@ if($page == 2){
 		exit();
 	}
 
-
 	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
 		$website_url = "https://";
 	}
@@ -137,6 +136,7 @@ if($page == 2){
 
 	$website_url .= $_SERVER['HTTP_HOST'].$subfolder;
 
+	$akaadmin = cq($_POST['akaadmin']);
 	$dbhost = cq($_POST['dbhost']);
 	$dbuser = cq($_POST['dbuser']);
 	$dbname = cq($_POST['dbname']);
@@ -144,7 +144,38 @@ if($page == 2){
 	$salt = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
 	$pepper = md5(uniqid(rand(), true))."-".md5(uniqid(rand(), true));
 	$website_name = "Feedbot";
-	$admin = cq($_POST['admin']);
+
+	// On vérifie l'aka de l'admin
+
+	$akaadmin = trim($akaadmin);
+	$exploder = explode('@', $akaadmin);
+
+	if($exploder[0] == ""){
+		$aka = $exploder[1];
+		$theDomain = $exploder[2];
+	}
+	else{
+		$aka = $exploder[0];
+		$theDomain = $exploder[1];
+	}
+
+	$aka = strtolower($aka); // À vérifier si ça ne pose pas de problème
+	$theDomain = strtolower($theDomain);
+	$akaadmin = "@".$aka."@".$theDomain."";
+	$akalink = "https://".$theDomain."/@".$aka."";
+	$xch = curl_init($akalink);
+	curl_setopt($xch, CURLOPT_HEADER, true);    // we want headers
+	curl_setopt($xch, CURLOPT_NOBODY, true);    // we don't need body
+	curl_setopt($xch, CURLOPT_RETURNTRANSFER,1);
+	curl_setopt($xch, CURLOPT_TIMEOUT,10);
+	$xoutput = curl_exec($xch);
+	$xhttpcode = curl_getinfo($xch, CURLINFO_HTTP_CODE);
+	curl_close($xch);
+
+	if($xhttpcode != 200){
+		header('location: ./install.php?page=1&erraka=yes&');
+		exit();
+	}
 
 	// On vérifie la connexion à la base de donnée
 	$cnx = new mysqli(''.$dbhost.'', ''.$dbuser.'', ''.$dbpassword.'');
@@ -168,6 +199,7 @@ if($page == 2){
 	$config .= "define('WEBSITE_URL', '".$website_url."');\ndefine('WEBSITE_URI', '".$dir."/');\n\n";
 	$config .= "// Links\ndefine('HOME_PAGE', WEBSITE_URL.'/');\n";
 	$config .= "define('GLOBAL_PAGE', WEBSITE_URL.'/?p=global');\ndefine('BOOKMARKS_PAGE', WEBSITE_URL.'/?p=bookmarks');\ndefine('ADD_FEED_PAGE', WEBSITE_URL.'/?p=add');\ndefine('YOUR_FEEDS_PAGE', WEBSITE_URL.'/?p=feeds');\ndefine('STATUSES_PAGE', WEBSITE_URL.'/?p=shares');\ndefine('PUBLISH_PAGE', WEBSITE_URL.'/?p=publish');\ndefine('SETTINGS_PAGE', WEBSITE_URL.'/?p=settings');\n\ninclude_once(WEBSITE_URI.'assets/lang/lang.php');\n\n";
+	$config .= "\$admin = '".$akaadmin."';\n";
 	$config .= "//DB Params\n\$servername = '".$dbhost."';\n";
 	$config .= "\$username = '".$dbuser."';\n";
 	$config .= "\$password = '".$dbpassword."';\n";
@@ -175,9 +207,7 @@ if($page == 2){
 	$config .= "\$conn = new mysqli(\$servername, \$username, \$password, \$dbname);\n\n";
 	$config .= "//Users security\n";
 	$config .= "\$salt = '".$salt."';\n";
-	$config .= "\$pepper = '".$pepper."';\n\n";
-	$config .= "//Administrator (must be a Mastodon aka. Example : @johnmastodon@mastoot.fr\n";
-	$config .= "\$admin = '".$admin."';\n";
+	$config .= "\$pepper = '".$pepper."';\n";
 	$config .= "?>";
 
 	file_put_contents(__DIR__.'/config.php', $config);
@@ -198,14 +228,19 @@ if($theme == ""){
 
 ?>
 
-<?php if($page == ""){ ?>
+<?php
+if($page == "" || $page == 1){
+	if(cq($_GET['erraka']) == "yes"){
+		echo "<div align=\"center\"><p>".I_ERRAKA."</p><br></div>";
+	}
+?>
 	<form action="install.php?page=2" method="POST" style="max-width:400px; text-align:left; align-items:initial; margin:auto;">
+		<input type="text" name="akaadmin" placeholder="<?=I_ADMIN;?>" required>
+		<div align="center"><i class="fa fa-minus" aria-hidden="true"></i></div>
 		<input type="text" name="dbname" placeholder="<?=I_DB_NAME;?>" required>
 		<input type="text" name="dbhost" placeholder="<?=I_DB_HOST;?>" required>
 		<input type="text" name="dbuser" placeholder="<?=I_DB_USER;?>" required>
 		<input type="password" name="dbpassword" placeholder="<?=I_DB_PWD;?>" required>
-		<label for="admin"><?=I_ADMIN;?></label>
-		<input type="text" name="admin" placeholder="<?=I_ADMIN_EXAMPLE;?>" required>
 		<button type="submit"><?=NEXT;?> <i aria-hidden="true" class="fa fa-caret-right fa-fw"></i></button>
 	</form>
 
