@@ -12,7 +12,8 @@ if($user_db_username == "") {
 	mysqli_query($conn, $sql);
 	$id_user_query =  mysqli_fetch_array(mysqli_query($conn, "SELECT id FROM users ORDER BY id DESC LIMIT 1"));
 	$id_user = $id_user_query['id'];
-	if ($id_user == $admin) {
+	$username = $id_user_query['username'];
+	if ($username == $admin) {
 		$sql = "UPDATE users SET admin = ('1') WHERE id = '$id_user'";
 		mysqli_query($conn, $sql);
 	}
