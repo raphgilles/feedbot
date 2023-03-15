@@ -20,6 +20,10 @@ Ajouter le script dans la variable $telegram_bot dans le fichier config.php<br /
 **Recommandations :**<br />
 Les taches crons s'excecutant en PHP, je recommande d'installer Feedbot sur un VPS disposant de deux coeurs afin d'éviter des ralentissements lors de la navigation.<br />
 
+**Feedbot Manager :**<br />
+Pour les hebergements mutualisés, vous pouvez ajouter votre instance dans le Feedbot Manager qui se chargera de l'automatisation :<br />
+https://manager.feedbot.net<br />
+
 **Logo :**<br />
 Logo créé par Maous, sous licence CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/)<br />
 https://maous.fr/<br />
