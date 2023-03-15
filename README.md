@@ -14,7 +14,7 @@ php{version}-gd<br />
 Pour créer un bot Telegram :<br />
 https://korben.info/comment-creer-bot-telegram.html<br />
 Renseignez l'API de votre bot dans le fichier config.php :<br />
-$telegram_api = '';<br />
+$telegram_api = 'API_ICI';<br />
 Rendez-vous ensuite sur cette page pour récupérer le script du bouton :<br />
 https://core.telegram.org/widgets/login<br />
 Choisir "Redirect to URL", à faire pointer vers : https://votredomaine.tld/includes/telegram.php<br />
