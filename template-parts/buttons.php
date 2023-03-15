@@ -12,7 +12,7 @@
             <input type="hidden" name="peertubeid" value="<?=$peertubeid;?>">
             <input type="hidden" name="youtubeid" value="<?=$youtubeid;?>">
             <input type="hidden" name="thumbnail" value="<?=$thumbnail;?>">
-            <button onclick="share(<?=$article_id;?>)"class="timeline-buttons" title="<?=SHARE;?>"><i class="fa fa-retweet" aria-hidden="true" style="margin-right: 5px;"></i> <?=SHARE;?></span></button>
+            <button onclick="share(<?=$article_id;?>)" class="timeline-buttons" title="<?=SHARE;?>"><i class="fa fa-retweet" aria-hidden="true" style="margin-right: 5px;"></i> <?=SHARE;?></span></button>
             </form>
 
             <form class="timeline-buttons unshare_<?=$article_id;?>" style="display: none;">
@@ -23,7 +23,7 @@
             </form>
 
         <?php } else { ?>
-            <form class="timeline-buttons share_<?=$article_id;?>" style="display: none;" action="<?=WEBSITE_URL?>/?p=publish" method="post">
+            <form class="timeline-buttons share_<?=$article_id;?>" style="display: none;" method="post">
             <input type="hidden" name="p" value="publish">
             <input type="hidden" name="article_id" value="<?=$article_id;?>">
             <input type="hidden" name="feed_id" value="<?=$feed_id;?>">
@@ -31,7 +31,7 @@
             <input type="hidden" name="messagetitle" value="<?=$title;?>">
             <input type="hidden" name="message" value="<?=$description_link;?>">
             <input type="hidden" name="url" value="<?=$url;?>">
-            <button type="submit" class="timeline-buttons" title="<?=SHARE;?>"><i class="fa fa-retweet" aria-hidden="true" style="margin-right: 5px;"></i> <?=SHARE;?></span></button>
+            <button onclick="share(<?=$article_id;?>)" class="timeline-buttons" title="<?=SHARE;?>"><i class="fa fa-retweet" aria-hidden="true" style="margin-right: 5px;"></i> <?=SHARE;?></span></button>
             </form>
 
             <form class="timeline-buttons unshare_<?=$article_id;?>">
