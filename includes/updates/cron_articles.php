@@ -14,7 +14,7 @@ $result4 = mysqli_query($conn, $sql4);
 $limit = 0;
 
 foreach ($result4 as $row4) {
-  if ($limit < 40) {
+  if ($limit < 20) {
     $id = $row4['id'];
     $user = $row4['uid'];
     $feed_id = $row4['feed_id'];

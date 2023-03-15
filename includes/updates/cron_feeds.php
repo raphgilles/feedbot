@@ -13,7 +13,7 @@ $result4 = mysqli_query($conn, $sql4);
 
 $limit = 0;
 while($row4 = $result4->fetch_array()) {
-	if ($limit < 30) {
+	if ($limit < 10) {
 		$feed_id = $row4['id'];
 		$feed_name = $row4['feed_title'];
 		$feed_url = $row4['feed_url'];

@@ -7,7 +7,7 @@ foreach($result as $row){
     $last_id = $row['404_last_id'];
 }
 
-$sql = "SELECT * FROM articles WHERE id > '$last_id' LIMIT 250";
+$sql = "SELECT * FROM articles WHERE id > '$last_id' LIMIT 100";
 $result = mysqli_query($conn, $sql);
 foreach($result as $row){
     $article_id = $row['id'];
