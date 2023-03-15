@@ -11,6 +11,9 @@ php{version}-mysql<br />
 php{version}-gd<br />
 
 **Ajouter le bouton Telegram dans les paramètres utilisateur :**<br />
+Pour créer un bot Telegram :<br />
+https://korben.info/comment-creer-bot-telegram.html<br />
+Rendez-vous ensuite sur cette page pour récupérer le script du bouton :<br />
 https://core.telegram.org/widgets/login<br />
 Choisir "Redirect to URL", à faire pointer vers : https://votredomaine.tld/includes/telegram.php<br />
 Ajouter le script dans la variable $telegram_bot dans le fichier config.php<br />
