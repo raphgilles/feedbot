@@ -223,6 +223,8 @@ define("I_DB_HOST", "Hôte de la base de donnée (ex: localhost)");
 define("I_DB_USER", "Utilisateur de la base de donnée (ex: root)");
 define("I_DB_NAME", "Nom de la base de donnée (ex: feedbot)");
 define("I_DB_PWD", "Mot de passe de la base de donnée");
+define("I_ADMIN", "Username Mastodon de l'administrateur");
+define("I_ADMIN_EXAMPLE", "Exemple : @johnmastodon@mastoot.fr");
 define("I_SAVE", "Enregistrer");
 define("I_WURL", "L’URL de votre site est acutellement :");
 define("I_DB_OK", "Connexion à la base de donnée réussie.");

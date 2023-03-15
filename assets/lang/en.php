@@ -227,6 +227,8 @@ define("I_DB_HOST", "Database host (eg: localhost)");
 define("I_DB_USER", "Database user (eg: root)");
 define("I_DB_NAME", "Database name (eg: feedbot)");
 define("I_DB_PWD", "Database password");
+define("I_ADMIN", "Administrator's Mastodon username");
+define("I_ADMIN_EXAMPLE", "Example : @johnmastodon@mastoot.fr");
 define("I_SAVE", "Save");
 define("I_WURL", "The url of your website will be the current URL :");
 define("I_DB_OK", "Database connection successful.");
