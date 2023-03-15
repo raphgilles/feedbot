@@ -48,7 +48,7 @@ $result4 = mysqli_query($conn, $sql4);
                         if ($article_id2 !== NULL && $telegramed == 0) {
                         // ENDROIT OU ENVOYER LES LIENS
                         $content = urlencode($content);
-                        $link = "https://api.telegram.org/bot5845260630:AAGNTnLUJSYu2YT-lyplcewxZq1q0nfAHaM/sendMessage?chat_id=".$telegram."&parse_mode=html&text=".$content;
+                        $link = "https://api.telegram.org/bot".$telegram_api."/sendMessage?chat_id=".$telegram."&parse_mode=html&text=".$content;
                         $curl = curl_init();
                         curl_setopt($curl, CURLOPT_URL, $link);
                         curl_setopt($curl, CURLOPT_COOKIESESSION, true);
