@@ -2,8 +2,10 @@
 include('../functions.php');
 include('../../config.php');
 $current_time = time();
+$website_name = WEBSITE_NAME;
+$website_name = strtolower($website_name);
 $limit = strtotime('-60 minutes', $current_time);
-$mention = ' via <a href="'.WEBSITE_URL.'/">@feedbot</a>';
+$mention = ' via <a href="'.WEBSITE_URL.'/">@'.$website_name.'</a>';
 
 $sql4 = "SELECT * FROM users";
 $result4 = mysqli_query($conn, $sql4);
@@ -71,5 +73,5 @@ $result4 = mysqli_query($conn, $sql4);
             }
         }
     }
-
+echo "<br /><br />Finished";
 ?>
