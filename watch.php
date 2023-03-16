@@ -309,7 +309,7 @@ $thumbnail_cinema = $thumbnail;
 	$firstword = $keywordaray['0'];
 	$other = str_replace("OR title REGEXP '[[:<:]][[:>:]]'", '', $other);
 	$other2 = str_replace("OR excerpt REGEXP '[[:<:]][[:>:]]'", '', $other2); 
-	$sql = "SELECT * FROM articles WHERE (youtubeid IS NOT NULL OR peertubeid IS NOT NULL) AND (youtubeid != '' OR peertubeid != '') AND (feed_id LIKE '%$feed_id%' OR title REGEXP '[[:<:]]".$firstword."[[:>:]]' $other OR excerpt REGEXP '[[:<:]]".$firstword."[[:>:]]' $other2) ORDER BY id DESC";
+	$sql = "SELECT * FROM articles WHERE (youtubeid IS NOT NULL OR peertubeid IS NOT NULL) AND (youtubeid != '' OR peertubeid != '') AND (feed_id = '$feed_id' OR title REGEXP '[[:<:]]".$firstword."[[:>:]]' $other OR excerpt REGEXP '[[:<:]]".$firstword."[[:>:]]' $other2) ORDER BY date DESC";
 	//echo $sql;
 
 	// $sql = "SELECT * FROM articles WHERE feed_id = '$feed_id' ORDER BY rand()";
