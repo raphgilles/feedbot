@@ -35,7 +35,9 @@
 			<input type="hidden" name="messagetitle" value="<?=$title;?>">
 			<input type="hidden" name="message" value="<?=$description_link;?>">
 			<input type="hidden" name="url" value="<?=$url;?>">
-			<button onclick="share(<?=$article_id;?>);" class="timeline-buttons" title="<?=SHARE;?>"><i class="fa fa-retweet" aria-hidden="true" style="margin-right: 5px;"></i> <?=SHARE;?></span></button>
+			<button onclick="share(<?=$article_id;?>);" class="timeline-buttons" title="<?=SHARE;?>">
+				<i class="fa fa-retweet" aria-hidden="true" style="margin-right: 5px;"></i> <?=SHARE;?>
+			</button>
 		</form>
 
 		<form class="timeline-buttons unshare_<?=$article_id;?>">
