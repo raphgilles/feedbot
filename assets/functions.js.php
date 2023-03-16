@@ -1390,14 +1390,14 @@ function podcast(id){
 }
 
 function dark_mode() {
-	$('#theme').attr('href', './assets/colors-dark.css');
+	$('#theme').attr('href', '<?=WEBSITE_URL;?>/assets/colors-dark.css');
 	$('.light_mode').show();
 	$('.dark_mode').hide();
 	document.cookie = "theme=dark; path=/; max-age=" + 30*24*60*60;
 }
 
 function light_mode() {
-	$('#theme').attr('href', './assets/colors-light.css');
+	$('#theme').attr('href', '<?=WEBSITE_URL;?>/assets/colors-light.css');
 	$('.light_mode').hide();
 	$('.dark_mode').show();
 	document.cookie = "theme=light; path=/; max-age=" + 30*24*60*60;
