@@ -2,12 +2,6 @@
 include('./config.php');
 include('./includes/functions.php');
 
-$sql = "SELECT * FROM users WHERE admin = '1'";
-$result = mysqli_query($conn, $sql);
-foreach($result as $row){
-  $admin = $row['username'];
-}
-
 $sidebar = $_COOKIE['open'];
 $lang = $_COOKIE['lang'];
 
