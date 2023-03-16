@@ -33,13 +33,14 @@ foreach ($rss->channel->item as $item) {
         $description = str_replace( "'", '’', $item->description);
         $description = html_entity_decode(strip_tags($description), ENT_SUBSTITUTE|ENT_HTML5, 'UTF-8');
         $date = $item->pubDate;
-        if ($date == "") {
-            $dc = $item->children('http://purl.org/dc/elements/1.1/');
+        if($date == ""){
+            $dc = $item->children('http:purl.org/dc/elements/1.1/');
             $date = $dc->date;
         }
-        if ($date == "") {
-            $date = time();
+        if($date == "" OR $date === NULL){
+            $date = date('Y-m-d\TH:i:sO', time());
         }
+        
         $thumbnail = WEBSITE_URL."/assets/nopreview.png";
         
         $page_content = file_get_contents($url);
