@@ -3,7 +3,7 @@ session_start();
 $feed_id = $_POST['feed_id'];
 $uid = $_SESSION['uid'];
 
-include('db.php');
+include('./config.php');
 
 $chat_id = $_GET['id'];
 echo "Utilisateur : ".$uid."<br />";
