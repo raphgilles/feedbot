@@ -26,10 +26,10 @@ $result3 = mysqli_query($conn, $sql3);
 <div style="clear:both;">
 
 <div class="banner-contenair">
-  <div class="single-feed-banner" style="background-image: url(<?= $feed_banner;?>);"></div>
-  <div class="single-feed-avatar"style="background-image: url(<?= $feed_avatar;?>);"></div>
+  <div class="single-feed-banner" style="background-image: url(<?=$feed_banner;?>);"></div>
+  <div class="single-feed-avatar"style="background-image: url(<?=$feed_avatar;?>);"></div>
   <div class="single-feed-title">
-    <span style="font-size: 20px; font-weight: bold;"><?= $feed_name;?></span> <?php if ($youtubeid !== "" && $youtubeid !== NULL) { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:26px; margin-left: 6px; margin-top: 2px; vertical-align: top;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:18px; margin-left: 6px; vertical-align: top;" /><?php } ?><br />
+    <p style="font-size:20px; font-weight:bold; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"><?=$feed_name;?> <?php if ($media_url == "www.youtube.com") { ?><img src="<?=WEBSITE_URL;?>/assets/youtube.png" alt="YouTube channel" style="width:26px; margin-left:6px; margin-top:-6px; vertical-align:middle;" /><?php } ?><?php if ($peertubeid !== NULL && $peertubeid !== "") { ?><img src="<?=WEBSITE_URL;?>/assets/peertube.png" alt="PeerTube channel" style="width:18px; margin-left:7px; vertical-align:top;" /><?php } ?></p>
     <span style="font-size: 16px;"><?= $media_url;?></span>
   </div>
 
