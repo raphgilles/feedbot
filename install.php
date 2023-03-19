@@ -218,6 +218,16 @@ if($page == 2){
 if($page == 3){
 	include('./config.php');
 	$dbfile = cq($_POST['dbfile']);
+	$instance_url = urlencode(WEBSITE_URL);
+	$url = "https://manager.feedbot.net/instances_listing.php?url=".$instance_url;
+
+	$xch = curl_init($url);
+	curl_setopt($xch, CURLOPT_HEADER, true);    // we want headers
+	curl_setopt($xch, CURLOPT_NOBODY, true);    // we don't need body
+	curl_setopt($xch, CURLOPT_RETURNTRANSFER,1);
+	curl_setopt($xch, CURLOPT_TIMEOUT,10);
+	curl_exec($xch);
+	curl_close($xch);
 }
 
 $theme = $_COOKIE['theme'];
