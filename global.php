@@ -1,4 +1,5 @@
 <?php 
+
 $sql = "SELECT * FROM feeds_published WHERE uid = '$user'";
 $result = mysqli_query($conn, $sql);
 $totalfeeds = mysqli_num_rows($result);
