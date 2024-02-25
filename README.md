@@ -35,5 +35,3 @@ https://maous.fr/<br />
 MastoPHP : https://github.com/StefOfficiel/MastoPHP<br />
 Sidebar : https://www.codinglabweb.com/2021/04/responsive-side-navigation-bar-in-html.html<br />
 AmplitudeJS (Audio Player) : https://github.com/521dimensions/amplitudejs
-
-----------
